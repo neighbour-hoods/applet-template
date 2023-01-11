@@ -1,0 +1,15 @@
+---
+manifest_version: "1"
+name: provider_applet
+integrity:
+network_seed: 00000000-0000-0000-0000-000000000000
+  properties: ~
+  zomes:
+    - name: provider_applet_integrity
+      bundled: ../target/wasm32-unknown-unknown/release/provider_applet_integrity.wasm
+coordinator:
+  zomes:
+    - name: provider_applet
+      bundled: ../target/wasm32-unknown-unknown/release/provider_applet.wasm
+      dependencies:
+        - name: provider_applet_integrity

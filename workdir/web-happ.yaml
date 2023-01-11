@@ -1,0 +1,7 @@
+---
+manifest_version: "1"
+name: provider
+ui:
+  bundled: "../we-applet/ui.zip"
+happ_manifest:
+  bundled: "./provider.happ"

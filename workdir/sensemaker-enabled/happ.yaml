@@ -1,0 +1,25 @@
+---
+manifest_version: "1"
+name: provider-sensemaker
+description: ~
+roles:
+  - id: provider
+    provisioning:
+      strategy: create
+      deferred: false
+    dna:
+      bundled: "../../dna/workdir/provider.dna"
+      properties: ~
+      uuid: ~
+      version: ~
+      clone_limit: 0
+  - id: sensemaker
+    provisioning:
+      strategy: create
+      deferred: false
+    dna:
+      bundled: "../sensemaker.dna"
+      properties: ~
+      uuid: ~
+      version: ~
+      clone_limit: 1000
