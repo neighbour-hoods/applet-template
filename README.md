@@ -1,12 +1,16 @@
 # applet-template
-This repository is a template for create nh-we applets.
+This repository is a template for creating nh-we applets. It is meant to be cloned and provide the basic repository structure and scripts for developing and testing your nh-we applets.
 
 ## getting started
-- familiarize yourself with the [repository structure](./STRUCTURE.md)
-- Clone this repository
-- add your zome code
-- replace all instances of `provider` (including in file or directory names)
-- build your front end store object (see `providerStore.ts`)
+1. set up your development environment by following the steps in [Environment Setup](#environment-setup)
+1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md)
+1. Clone this repository
+1. add your zome code
+1. create your applet config and add it to both [`./ui/src/appletConfig.ts`](./ui/src/appletConfig.ts) & [`./we-applet/src/appletConfig.ts`](./we-applet/src/appletConfig.ts)
+1. replace all instances of `provider` (including in file or directory names)
+1. build your front end store object (see `providerStore.ts`)
+1. test your UI with `npm run start`
+1. package your applet as a `.webhapp` file to be imported by nh-we with `npm run package`
 
 ## Environment Setup
 
