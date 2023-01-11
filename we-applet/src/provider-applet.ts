@@ -47,7 +47,6 @@ export class ProviderApplet extends ScopedElementsMixin(LitElement) {
     return {
       "mwc-circular-progress": CircularProgress,
       "provider-app": ProviderApp,
-      // TODO: add any elements that you have in your applet
     };
   }
 }
