@@ -12,6 +12,21 @@ This repository is a template for creating nh-we applets. It is meant to be clon
 1. test your UI with `npm run start`
 1. package your applet as a `.webhapp` file to be imported by nh-we with `npm run package`
 
+## testing your applet in We
+once you are ready to test your applet in we, you will need to run nh-we in developer mode to upload the webhapp file. To do that:
+1. git clone [`nh-we`](https://github.com/neighbour-hoods/nh-we)
+1. git fetch and switch to the `sensemaker-integration` branch
+1. follow steps in the [read me](https://github.com/neighbour-hoods/nh-we/tree/sensemaker-integration) (`nix-shell`, `npm i`, `npm run start`) to get we running in dev mode (it should launch into the browser)
+1. create a we group
+    - ![create group button](./images/add-group.png)
+1. create your user in the group
+1. go to applet library
+    - ![applet library button](./images/applet-library.png)
+1. select `INSTALL APPLET FROM FILESYSTEM` button
+    - ![install from file button](./images/install-from-filesystem.png)
+1. navigate to you applet `.webhapp` file and click `install`
+    - ![select applet file](./images/select-applet-file.png)
+
 ## Environment Setup
 
 1. Install the holochain dev environment (only nix-shell is required): https://developer.holochain.org/docs/install/
