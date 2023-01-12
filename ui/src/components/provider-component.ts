@@ -16,8 +16,6 @@ export class ProviderComponent extends ScopedElementsMixin(LitElement) {
 
     
     render() {
-        console.log(get(this.providerStore.listLists()))
-        this.updateListList()
         return html`
             <div>
                 <p1>this is a provider component!</p1>
@@ -27,16 +25,8 @@ export class ProviderComponent extends ScopedElementsMixin(LitElement) {
     
     static get scopedElements() {
         return {
-        'list-item': ListItem,
-        'add-item': AddItem,
         'mwc-list': List,
         'mwc-list-item': MWCListItem,
         };
     }
-    static styles = css`
-        .list-list-container {
-            display: flex;
-            flex-direction: column;
-        }
-    `
 }

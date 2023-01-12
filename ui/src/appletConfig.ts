@@ -1,5 +1,6 @@
 import { AppletConfigInput, ConfigCulturalContext, ConfigMethod, ConfigResourceType, ConfigThreshold, Dimension, Range } from '@neighbourhoods/sensemaker-lite-types'
 
+// This is the applet config for the todo applet, but provides an outline of how to create your own applet config
 const importanceRange: Range = {
     "name": "1-scale",
     "kind": {

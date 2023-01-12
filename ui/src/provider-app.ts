@@ -12,6 +12,7 @@ import { ProviderComponent } from './index'
 import { get } from 'svelte/store';
 
 export class ProviderApp extends ScopedElementsMixin(LitElement) {
+  // set up the context providers for both stores so that they can be accessed by other components
   @contextProvider({ context: providerStoreContext })
   @property()
   providerStore!: ProviderStore;
@@ -33,6 +34,8 @@ export class ProviderApp extends ScopedElementsMixin(LitElement) {
     `;
   }
 
+  // this is an example function of computing a context, since your UI will likely be displaying various contexts
+  // this is an example from the todo applet
   async computeContext(_e: CustomEvent) {
     const contextResultInput: ComputeContextInput = {
       resource_ehs: get(this.providerStore.allProviderResourceEntryHashes()),

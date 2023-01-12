@@ -38,15 +38,21 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
   _sensemakerStore!: SensemakerStore;
 
 
+  // on the first update, setup any networking connections required for app execution
   async firstUpdated() {
+    
+    // connect to the conductor
     await this.connectHolochain()
     const installedCells = this.appInfo.cell_data;
     const client = new HolochainClient(this.appWebsocket);
+    
     // check if sensemaker has been cloned yet
     let clonedSensemakerCell: InstalledCell | undefined
     clonedSensemakerCell = installedCells.find(
+      // when a cell is cloned, the role_id is appended with the number of the clone
       c => c.role_id === 'sensemaker.0'
     );
+    // if it hasn't been cloned yet, clone it
     if (!clonedSensemakerCell) {
       const sensemakerCell = installedCells.find(
         c => c.role_id === 'sensemaker'
@@ -65,25 +71,33 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
         name: 'sensemaker-clone',
       });
     }
+    
+    // construct the sensemaker store
     const sensemakerCellClient = new CellClient(client, clonedSensemakerCell);
-    const sensemakerService = new SensemakerService(sensemakerCellClient)
+    const sensemakerService = new SensemakerService(sensemakerCellClient);
     this._sensemakerStore = new SensemakerStore(sensemakerService);
 
     let appInfos = await this.appWebsocket.appInfo({
       installed_app_id: 'provider',
     });
 
+    // register the applet config
     await this._sensemakerStore.registerApplet(appletConfig)
 
     const providerCell = installedCells.find(
       c => c.role_id === 'provider'
     ) as InstalledCell;
 
+    // construct the provider store
     this._providerStore = new ProviderStore(
         new HolochainClient(this.appWebsocket),
         providerCell,
     );
-    const allTasks = await this._providerStore.fetchAllResources()
+    
+    // fetch all resources to initialize the provider store
+    const allResources = await this._providerStore.fetchAllResources()
+
+    // initialize the sensemaker store so that the UI knows about assessments and other sensemaker data
     await this.updateSensemakerState()
     this.loading = false;
   }

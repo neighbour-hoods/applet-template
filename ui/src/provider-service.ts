@@ -3,6 +3,7 @@ import { Dictionary, EntryHashB64 } from '@holochain-open-dev/core-types';
 import { ActionHash } from '@holochain/client';
 import { Task, TaskToListInput, WrappedEntry } from './types';
 
+// the ProviderService object handles the zome calls
 export class ProviderService {
   constructor(public cellClient: CellClient, public zomeName = 'provider') {}
 
