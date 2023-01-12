@@ -1,0 +1,8 @@
+`svelte/store` is used to manage state in the frontend. `SensemakerStore` also uses `svelte/store` to manage its state. The main pattern here is to construct an object which contains a field (or multiple) which represent the data in a way that is useful to the UI, as well as methods for interacting with this state.
+
+Likely you will want to blend data from the sensemaker with data from the provider so that you can display things like assessments on resources in the UI. To see an example of how data from the two different stores are blended for display in the UI, see the [`addMyAssessmentsToTasks()`](https://github.com/neighbour-hoods/todo-applet/blob/16c762e06d362b5430eee395a41b9dce778d1ced/ui/src/utils.ts#L8-L24) function in the [todo-applet](https://github.com/neighbour-hoods/todo-applet). 
+
+In that example, we want to be able to display to the user if a task item has already been assessed (checked as important) by them. So we blend them together and return an object of type [`WrappedTaskWithAssessment`](https://github.com/neighbour-hoods/todo-applet/blob/16c762e06d362b5430eee395a41b9dce778d1ced/ui/src/types.ts#L30) so that the [`task-item`](https://github.com/neighbour-hoods/todo-applet/blob/main/ui/src/components/task-item.ts) component knows how to display the blended state. You can see an example of using conditional attributes to display the state of assessment [here](https://github.com/neighbour-hoods/todo-applet/blob/16c762e06d362b5430eee395a41b9dce778d1ced/ui/src/components/task-item.ts#L38), or from the following line of code:
+```
+<mwc-checkbox ?disabled=${this.taskIsAssessed} ?checked=${this.taskIsAssessed} @click=${this.dispatchAssessTask}></mwc-checkbox>
+```
