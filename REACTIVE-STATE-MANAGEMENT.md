@@ -6,3 +6,5 @@ In that example, we want to be able to display to the user if a task item has al
 ```
 <mwc-checkbox ?disabled=${this.taskIsAssessed} ?checked=${this.taskIsAssessed} @click=${this.dispatchAssessTask}></mwc-checkbox>
 ```
+
+Another important component of state management is signal handling for real-time collaboration. Currently, signal handling is not yet implemented in the todo applet of which this template is based on. That will be added in the near future, however!
