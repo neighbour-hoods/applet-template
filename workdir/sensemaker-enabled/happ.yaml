@@ -3,7 +3,7 @@ manifest_version: "1"
 name: provider-sensemaker
 description: ~
 roles:
-  - id: provider
+  - name: provider
     provisioning:
       strategy: create
       deferred: false
@@ -13,7 +13,7 @@ roles:
       uuid: ~
       version: ~
       clone_limit: 0
-  - id: sensemaker
+  - name: sensemaker
     provisioning:
       strategy: create
       deferred: false

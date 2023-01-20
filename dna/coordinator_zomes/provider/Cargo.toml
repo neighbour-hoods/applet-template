@@ -14,4 +14,4 @@ derive_more = "0"
 provider_integrity = { path = "../../integrity_zomes/provider_integrity" }
 
 # hdk = {version = "0.0.161", features = ["test_utils"]}
-hdk = "0.0.161"
+hdk = "=0.1.0-beta-rc.2"
