@@ -6,6 +6,7 @@ import {
   InstalledAppInfo,
   AdminWebsocket,
   InstalledCell,
+  EntryHash,
 } from '@holochain/client';
 import '@material/mwc-circular-progress';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
@@ -132,9 +133,9 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
   }
 
   async updateSensemakerState() {
-    const allProviderResourceEntryHashes = get(this._providerStore.allProviderResourceEntryHashes())
+    const allProviderResourceEntryHashes: EntryHash[] = await this._providerStore.allProviderResourceEntryHashes()
     const dimensionEh = get(this._sensemakerStore.appletConfig()).dimensions["importance"]
-    for (const taskEh of allTaskEntryHashes) {
+    for (const taskEh of allProviderResourceEntryHashes) {
       await this._sensemakerStore.getAssessmentForResource({
         dimension_eh: dimensionEh,
         resource_eh: taskEh

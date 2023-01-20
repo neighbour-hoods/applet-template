@@ -1,7 +1,6 @@
 import { CellClient } from '@holochain-open-dev/cell-client';
-import { Dictionary, EntryHashB64 } from '@holochain-open-dev/core-types';
-import { ActionHash } from '@holochain/client';
-import { Task, TaskToListInput, WrappedEntry } from './types';
+import { Dictionary } from '@holochain-open-dev/core-types';
+import { EntryHash } from '@holochain/client';
 
 // the ProviderService object handles the zome calls
 export class ProviderService {
@@ -10,7 +9,7 @@ export class ProviderService {
   async createNewResource(input: string): Promise<null> {
     return this.callZome('create_new_resource', input);
   }
-  async allProviderResourceEntryHashes(): Promise<Array<EntryHashB64>> {
+  async allProviderResourceEntryHashes(): Promise<Array<EntryHash>> {
     return this.callZome('all_provider_resource_entry_hashes', null);
   }
   async fetchAllResources(): Promise<Dictionary<null>> {

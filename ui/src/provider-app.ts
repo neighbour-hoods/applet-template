@@ -1,5 +1,5 @@
 import { LitElement, css, html } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { contextProvider } from '@lit-labs/context';
 import '@material/mwc-circular-progress';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
@@ -38,7 +38,7 @@ export class ProviderApp extends ScopedElementsMixin(LitElement) {
   // this is an example from the todo applet
   async computeContext(_e: CustomEvent) {
     const contextResultInput: ComputeContextInput = {
-      resource_ehs: get(this.providerStore.allProviderResourceEntryHashes()),
+      resource_ehs: await this.providerStore.allProviderResourceEntryHashes(),
       context_eh: get(this.sensemakerStore.appletConfig()).cultural_contexts["most_important_tasks"],
       can_publish_result: false,
     }

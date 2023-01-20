@@ -4,10 +4,9 @@ import {
   Dictionary,
 } from '@holochain-open-dev/core-types';
 import { serializeHash } from '@holochain-open-dev/utils';
-import { derived, get, Writable, writable } from 'svelte/store';
+import { Writable, writable } from 'svelte/store';
 import { EntryHash, InstalledCell, Record } from '@holochain/client';
 import { ProviderService } from './provider-service';
-import { Task, TaskToListInput, WrappedEntry } from './types';
 
 // the ProviderStore manages the Writable svelte/store object, like accessing and updating it
 export class ProviderStore {

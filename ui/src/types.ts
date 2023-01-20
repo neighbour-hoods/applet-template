@@ -1,6 +1,7 @@
 import { ActionHash, EntryHash } from "@holochain/client"
 import { Assessment } from "@neighbourhoods/sensemaker-lite-types"
 
+// NOTE: these are only example type definitions, you will need to define your own types to match the types defined in your zome code
 interface Task {
     description: string,
     status: TaskStatus,
