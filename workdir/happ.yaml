@@ -4,7 +4,7 @@ name: provider
 description: ~
 roles:
 
-  - id: provider
+  - name: provider
     provisioning:
       strategy: create
       deferred: false

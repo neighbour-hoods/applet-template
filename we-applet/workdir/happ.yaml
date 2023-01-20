@@ -3,7 +3,7 @@ manifest_version: "1"
 name: provider_applet-applet
 description: ~
 roles:
-  - id: provider_applet
+  - name: provider_applet
     provisioning:
       strategy: create
       deferred: false
