@@ -23,32 +23,32 @@ const providerApplet: WeApplet = {
     weStore: WeServices,
     appletAppInfo: AppletInfo[]
   ): Promise<AppletRenderers> {
+    const appId = appletAppInfo[0].appInfo.installed_app_id
+    const installedCells = appletAppInfo[0].appInfo.cell_info[PROVIDER_ROLE_NAME]
+      .map((c: CellInfo) => ((c as { [CellType.Provisioned as string]: Cell }).Provisioned || (c as { [CellType.Cloned as string]: Cell }).Cloned) as InstalledCell);
+    const providerCell = installedCells
+      .find(c => c.role_name === PROVIDER_ROLE_NAME)
+
+    let providerStore;
+    if (providerCell) {
+      const appWs = await AppAgentWebsocket.connect(
+        appWebsocket.client.socket.url,
+        PROVIDER_ROLE_NAME,
+      );
+      providerStore = new ProviderStore(appWs, providerCell);
+    } else {
+      throw new Error("Unable to render WeApplet: no provider Cell detected")
+    }
+
     return {
       full(element: HTMLElement, registry: CustomElementRegistry) {
         registry.define("provider-applet", ProviderApplet);
         element.innerHTML = `<provider-applet></provider-applet>`;
         const appletElement = element.querySelector("provider-applet") as any;
 
-        const appId = appletAppInfo[0].appInfo.installed_app_id
-        const installedCells = appletAppInfo[0].appInfo.cell_info[PROVIDER_ROLE_NAME]
-          // @ts-ignore
-          .map((c: CellInfo) => (c[CellType.Provisioned] || c[CellType.Cloned]) as InstalledCell);
-        const providerCell = installedCells
-          .find(c => c.role_name === PROVIDER_ROLE_NAME)
-
-        if (providerCell) {
-          AppAgentWebsocket.connect(
-            appWebsocket.client.socket.url,
-            PROVIDER_ROLE_NAME,
-          ).then(appWs => {
-            const providerStore = new ProviderStore(appWs, providerCell)
-            appletElement.providerStore = providerStore;
-            appletElement.appletAppInfo = appletAppInfo;
-            appletElement.sensemakerStore = weStore.sensemakerStore;
-          })
-        } else {
-          throw new Error("Unable to render WeApplet: no provider Cell detected")
-        }
+        appletElement.providerStore = providerStore;
+        appletElement.appletAppInfo = appletAppInfo;
+        appletElement.sensemakerStore = weStore.sensemakerStore;
       },
       blocks: [],
     };
