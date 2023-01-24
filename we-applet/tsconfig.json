@@ -14,9 +14,9 @@
     "inlineSources": true,
     "incremental": true,
     "outDir": "./out-tsc",
-    "rootDir": "./src",
+    "rootDir": "../",
     "declaration": true,
     "skipLibCheck": true,
   },
-  "include": ["src/*.ts", "src/**/*.ts"]
+  "include": ["src/*.ts", "src/**/*.ts", "../ui/src", "../ui/src/*.ts"]
 }
