@@ -1,11 +1,12 @@
-import { CellClient, HolochainClient } from '@holochain-open-dev/cell-client';
-import {
-  AgentPubKeyB64,
-  Dictionary,
-} from '@holochain-open-dev/core-types';
-import { serializeHash } from '@holochain-open-dev/utils';
 import { Writable, writable } from 'svelte/store';
-import { EntryHash, InstalledCell, Record } from '@holochain/client';
+import {
+  AppAgentWebsocket,
+  EntryHash,
+  AgentPubKeyB64,
+  InstalledCell,
+  Record,
+  encodeHashToBase64,
+} from '@holochain/client';
 import { ProviderService } from './provider-service';
 
 // the ProviderStore manages the Writable svelte/store object, like accessing and updating it
@@ -14,20 +15,20 @@ export class ProviderStore {
 
   // this private field is meant to store the data from the provider dna in a structure that is helpful to the UI
   // you could create additional fields depending on what makes the most sense for your application data model
-  #providerData: Writable<Dictionary<Array<Record>>> = writable({});
+  #providerData: Writable<Record<string, Array<Record>>> = writable({});
 
   get myAgentPubKey(): AgentPubKeyB64 {
-    return serializeHash(this.providerCell.cell_id[1]);
+    return encodeHashToBase64(this.providerCell.cell_id[1]);
   }
 
   constructor(
-    protected client: HolochainClient,
+    protected client: AppAgentWebsocket,
     protected providerCell: InstalledCell,
     zomeName: string = 'provider'
   ) {
     this.service = new ProviderService(
-      new CellClient(client, providerCell),
-      zomeName
+      client,
+      providerCell.cell_id
     );
   }
 

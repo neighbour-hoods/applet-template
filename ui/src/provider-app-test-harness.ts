@@ -22,6 +22,9 @@ import appletConfig from './appletConfig'
 const APP_SOCKET_URI = `ws://localhost:${process.env.HC_PORT}`
 const ADMIN_SOCKET_URI = `ws://localhost:${process.env.HC_ADMIN_PORT}`
 
+const SENSEMAKER_ROLE_NAME = "sensemaker"
+const PROVIDER_ROLE_NAME = "provider"
+
 export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
   @state() loading = true;
   @state() actionHash: ActionHash | undefined;
@@ -45,8 +48,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
 
   // on the first update, setup any networking connections required for app execution
   async firstUpdated(): Promise<void> {
-    const SENSEMAKER_ROLE_NAME = "sensemaker"
-    
+
     // connect to the conductor
     await this.connectHolochain()
     const installedCells = (this.appInfo as AppInfo).cell_info[SENSEMAKER_ROLE_NAME]
@@ -95,13 +97,17 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     await this._sensemakerStore.registerApplet(appletConfig)
 
     const providerCell = installedCells
-      .find(c => c.role_name === 'provider');
+      .find(c => c.role_name === PROVIDER_ROLE_NAME);
 
     // construct the provider store
-    this._providerStore = new ProviderStore(
-        new HolochainClient(this.appWebsocket),
-        providerCell,
-    );
+    if (providerCell) {
+      this._providerStore = new ProviderStore(await AppAgentWebsocket.connect(
+        APP_SOCKET_URI,
+        this.appInfo.installed_app_id,
+      ), providerCell);
+    } else {
+      throw new Error("Unable to detect provider cell")
+    }
     
     // fetch all resources to initialize the provider store
     const allResources = await this._providerStore.fetchAllResources()
