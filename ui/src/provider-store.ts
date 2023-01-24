@@ -15,7 +15,7 @@ export class ProviderStore {
 
   // this private field is meant to store the data from the provider dna in a structure that is helpful to the UI
   // you could create additional fields depending on what makes the most sense for your application data model
-  #providerData: Writable<Record<string, Array<Record>>> = writable({});
+  #providerData: Writable<{ [any: string]: Array<Record> }> = writable({});
 
   get myAgentPubKey(): AgentPubKeyB64 {
     return encodeHashToBase64(this.providerCell.cell_id[1]);
