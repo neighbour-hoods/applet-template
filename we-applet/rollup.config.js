@@ -26,6 +26,7 @@ export default {
     nodeResolve({
       browser: true,
       preferBuiltins: false,
+      modulePaths: [path.resolve(__dirname, './out-tsc'), path.resolve(__dirname, './dist')],
     }),
     replace({
       "process.env.NODE_ENV": '"production"',

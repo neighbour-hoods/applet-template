@@ -1,3 +1,4 @@
+import path from 'path';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
@@ -35,6 +36,7 @@ export default {
     /** Resolve bare module imports */
     nodeResolve({
       browser: true,
+      modulePaths: [path.resolve(__dirname, './dist')],
     }),
     commonjs(),
     /** Minify JS */
