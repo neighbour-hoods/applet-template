@@ -22,6 +22,10 @@
     "download-sensemaker": "rimraf workdir/sensemaker.dna && curl -L --output workdir/sensemaker.dna https://github.com/neighbour-hoods/sensemaker-lite/releases/download/v0.0.2-alpha/sensemaker.dna",
     "start:ui": "npm run start -w ui"
   },
+  "dependencies": {
+    "@holochain/client": "0.11.13",
+    "@neighbourhoods/sensemaker-lite-types": "0.1.0"
+  },
   "devDependencies": {
     "@holochain-playground/cli": "^0.0.11",
     "concurrently": "^6.2.1",
