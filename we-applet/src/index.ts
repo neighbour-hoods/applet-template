@@ -2,6 +2,7 @@ import {
   AdminWebsocket,
   AppWebsocket,
   InstalledCell,
+  AppInfo,
 } from "@holochain/client";
 import {
   WeApplet,
@@ -11,7 +12,9 @@ import {
 } from "@neighbourhoods/nh-we-applet";
 import { ProviderStore } from "@neighbourhoods/provider-applet";
 import { ProviderApplet } from "./provider-applet";
-import { HolochainClient } from '@holochain-open-dev/cell-client';
+import { AppAgentClient } from '@holochain/client';
+
+const PROVIDER_ROLE_NAME = 'provider'
 
 const providerApplet: WeApplet = {
   async appletRenderers(
@@ -26,10 +29,10 @@ const providerApplet: WeApplet = {
         element.innerHTML = `<provider-applet></provider-applet>`;
         const appletElement = element.querySelector("provider-applet") as any;
 
-        const providerCell = appletAppInfo[0].installedAppInfo.cell_data.find(c => c.role_id === 'provider') as InstalledCell;
+        const appId = appletAppInfo[0].installedAppInfo.installed_app_id
         const providerStore = new ProviderStore(
-          new HolochainClient(appWebsocket),
-          providerCell,
+          new AppAgentClient(appWebsocket, appId),
+          PROVIDER_ROLE_NAME,
         )
         appletElement.providerStore = providerStore;
         appletElement.appletAppInfo = appletAppInfo;

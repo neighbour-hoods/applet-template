@@ -5,7 +5,6 @@ import { decode } from '@msgpack/msgpack';
 import pkg from 'tape-promise/tape';
 const { test } = pkg;
 import { providerDna } from "./utils";
-import { serializeHash } from "@holochain-open-dev/utils";
 
 
 export default () => test("provider CRUD tests", async (t) => {
