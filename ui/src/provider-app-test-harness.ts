@@ -10,6 +10,8 @@ import {
   AdminWebsocket,
   EntryHash,
   encodeHashToBase64,
+  Cell,
+  RoleName,
 } from '@holochain/client';
 import '@material/mwc-circular-progress';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
@@ -50,25 +52,18 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     // connect to the conductor
     try {
       await this.connectHolochain()
-      const installedCells = (this.appInfo as AppInfo).cell_info[SENSEMAKER_ROLE_NAME]
-        // @ts-ignore
-        .map((c: CellInfo) => (c[CellType.Provisioned] || c[CellType.Cloned]) as InstalledCell);
-
+      const installedSensemakerCells = (this.appInfo as AppInfo).cell_info[SENSEMAKER_ROLE_NAME]
+      
       // check if sensemaker has been cloned yet
-      let clonedSensemakerCell: InstalledCell | undefined
-      clonedSensemakerCell = installedCells.find(
-        // when a cell is cloned, the role_name is appended with the number of the clone
-        (c: InstalledCell) => c.role_name === `${SENSEMAKER_ROLE_NAME}.0`
-      );
-      // if it hasn't been cloned yet, clone it
-      if (!clonedSensemakerCell) {
-        console.debug(`Cloning new Cell for ${SENSEMAKER_ROLE_NAME}`)
+      let allSensemakerClones = installedSensemakerCells.filter((cellInfo) => "Cloned" in cellInfo);
+      let provisionedSensemakerCells: CellInfo[] = installedSensemakerCells.filter((cellInfo) => "Provisioned" in cellInfo);
+      const sensemakerCell: Cell = (provisionedSensemakerCells[0] as { "Provisioned": Cell }).Provisioned;
+      let clonedSensemakerRoleName: RoleName;
 
-        const sensemakerCell = installedCells.find(
-          //@ts-ignore
-          c => c.name === SENSEMAKER_ROLE_NAME
-        ) as InstalledCell;
-        clonedSensemakerCell = await this.appWebsocket.createCloneCell({
+      // if it hasn't been cloned yet, clone it
+      if (allSensemakerClones.length === 0) {
+        console.debug(`Cloning new Cell for ${SENSEMAKER_ROLE_NAME}`)
+        const clonedSensemakerCell = await this.appWebsocket.createCloneCell({
           app_id: 'provider-sensemaker',
           role_name: SENSEMAKER_ROLE_NAME,
           modifiers: {
@@ -80,25 +75,30 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
           },
           name: 'sensemaker-clone',
         });
+        clonedSensemakerRoleName = clonedSensemakerCell.role_name!;
+      }
+      else {
+        const clonedSensemakerCell = (allSensemakerClones[0] as { "Cloned": Cell }).Cloned;
+        clonedSensemakerRoleName = clonedSensemakerCell.name!;
       }
       // now that we've cloned, we should be able to successfully pass subsequent execution of this method
       // return await this.firstUpdated()
 
       const appAgentWebsocket: AppAgentWebsocket = await AppAgentWebsocket.connect(this.appWebsocket, "todo-sensemaker");
-      const sensemakerService = new SensemakerService(appAgentWebsocket, clonedSensemakerCell.role_name!);
+      const sensemakerService = new SensemakerService(appAgentWebsocket, clonedSensemakerRoleName);
       this._sensemakerStore = new SensemakerStore(sensemakerService);
 
       // register the applet config
       await this._sensemakerStore.registerApplet(appletConfig)
 
-      const providerCell = installedCells
-        .find(c => c.role_name === PROVIDER_ROLE_NAME);
+      const providerCellInfo: CellInfo = this.appInfo.cell_info[PROVIDER_ROLE_NAME][0]
+      const providerCell: Cell = (providerCellInfo as { "Provisioned": Cell }).Provisioned;
+
 
       // construct the provider store
-      console.log("new line")
-      if (providerCell) {
+      if (providerCellInfo) {
         this._providerStore = new ProviderStore(await AppAgentWebsocket.connect(
-          this.appWebsocket.client.socket.url,
+          this.appWebsocket,
           this.appInfo.installed_app_id,
         ), providerCell);
       } else {
@@ -106,7 +106,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
       }
 
       // initialize the sensemaker store so that the UI knows about assessments and other sensemaker data
-      await this.updateSensemakerState()
+      // await this.updateSensemakerState()
     }
     catch (e) {
       console.error(e)
@@ -134,11 +134,12 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     this.appWebsocket = await AppWebsocket.connect(``);
 
     this.appInfo = await this.appWebsocket.appInfo({
-      installed_app_id: 'provider',
+      installed_app_id: 'provider-sensemaker',
     });
   }
 
   async updateSensemakerState() {
+    // you will need to implement the following methods in your provider dna, this is just an example of fetching sensemaker state
     const allProviderResourceEntryHashes: EntryHash[] = await this._providerStore.allProviderResourceEntryHashes()
     const dimensionEh = get(this._sensemakerStore.appletConfig()).dimensions["importance"]
     for (const taskEh of allProviderResourceEntryHashes) {
