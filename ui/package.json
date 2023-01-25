@@ -19,7 +19,7 @@
     "package": "npm run build && cd dist && bestzip ../dist.zip *"
   },
   "dependencies": {
-    "@holochain/client": "^0.11.13",
+    "@holochain/client": "0.11.9",
     "@lit-labs/context": "^0.1.2",
     "@material/mwc-button": "^0.25.3",
     "@material/mwc-circular-progress": "^0.25.3",
