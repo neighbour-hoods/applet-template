@@ -27,7 +27,7 @@ const totalImportanceDimension = {
 
 const taskItemResourceType: ConfigResourceType = {
     "name": "task_item",
-    "base_types": [{ "id": 0, "zome_id": 0, "visibility": { "Public": null } }],
+    "base_types": [{ "entry_index": 0, "zome_index": 0, "visibility": { "Public": null } }],
     "dimensions": [importanceDimension]
 }
 
