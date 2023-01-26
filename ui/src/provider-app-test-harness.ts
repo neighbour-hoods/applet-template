@@ -49,11 +49,12 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
   // on the first update, setup any networking connections required for app execution
   async firstUpdated(): Promise<void> {
     let detectedSensemakerCell: InstalledCell | undefined;
+    let installedCells: InstalledCell[];
 
     try {
       // connect to the conductor
       await this.connectHolochain()
-      const installedCells = this.getInstalledCells();
+      installedCells = this.getInstalledCells();
 
       // check if sensemaker has been cloned yet
       detectedSensemakerCell = installedCells.find(
@@ -90,7 +91,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
 
     // construct the sensemaker store
     const sensemakerService = new SensemakerService(await AppAgentWebsocket.connect(
-      APP_SOCKET_URI,
+      this.appWebsocket,
       this.appInfo.installed_app_id,
     ), detectedSensemakerCell.role_name!);
     this._sensemakerStore = new SensemakerStore(sensemakerService);
@@ -104,7 +105,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     // construct the provider store
     if (providerCell) {
       this._providerStore = new ProviderStore(await AppAgentWebsocket.connect(
-        this.appWebsocket.client.socket.url,
+        this.appWebsocket,
         this.appInfo.installed_app_id,
       ), providerCell);
     } else {
