@@ -35,9 +35,9 @@ export default {
     }),
     replace({
       "process.env.NODE_ENV": '"production"',
-      "process.env.ENV": `"${process.env.ENV}"`,
-      "process.env.HC_PORT": `undefined`,
-      "process.env.ADMIN_PORT": `undefined`,
+      "process.env.ENV": `"${process.env.ENV}"`,  // :TODO: this seems like a possible security issue, should we be sending this?
+      "process.env.HC_PORT": JSON.stringify(process.env.HC_PORT) || `undefined`,
+      "process.env.ADMIN_PORT": JSON.stringify(process.env.ADMIN_PORT) || `undefined`,
     }),
     commonjs({}),
     typescript({

@@ -19,6 +19,9 @@ import { SensemakerService, SensemakerStore } from '@neighbourhoods/nh-we-applet
 import { ProviderApp } from './index';
 import appletConfig from './appletConfig'
 
+const HC_APP_SOCKET_URI = process.env.HC_PORT ? `ws://localhost:${process.env.HC_PORT}` : ``;
+const HC_ADMIN_SOCKET_URI = process.env.ADMIN_PORT ? `ws://localhost:${process.env.ADMIN_PORT}` : ``;
+
 const SENSEMAKER_ROLE_NAME = "sensemaker"
 const PROVIDER_ROLE_NAME = "provider"
 
@@ -132,9 +135,8 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
   }
 
   async connectHolochain() {
-    this.adminWebsocket = await AdminWebsocket.connect(``);
-
-    this.appWebsocket = await AppWebsocket.connect(``);
+    this.adminWebsocket = await AdminWebsocket.connect(HC_ADMIN_SOCKET_URI);
+    this.appWebsocket = await AppWebsocket.connect(HC_APP_SOCKET_URI);
 
     await this.refreshAppInfo();
   }
@@ -145,7 +147,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
         .map((c: CellInfo) => (c[CellType.Provisioned] || c[CellType.Cloned]) as InstalledCell)
   }
 
-  async refreshAppInfo(appInfo: AppInfo) {
+  async refreshAppInfo() {
     this.appInfo = await this.appWebsocket.appInfo({
       installed_app_id: 'provider',
     });
