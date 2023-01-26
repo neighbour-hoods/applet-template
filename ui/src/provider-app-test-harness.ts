@@ -86,7 +86,9 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
         await this.refreshAppInfo();
       }
     } catch (e) {
-      console.error(e)
+      // log and throw any connection error
+      console.error(e);
+      throw e;
     }
 
     // construct the sensemaker store
