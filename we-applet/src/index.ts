@@ -29,7 +29,7 @@ const providerApplet: WeApplet = {
     const providerCell = installedCells
       .find(c => c.role_name === PROVIDER_ROLE_NAME)
 
-    let providerStore;
+    let providerStore?: ProviderStore;
     if (providerCell) {
       const appWs = await AppAgentWebsocket.connect(
         appWebsocket.client.socket.url,
