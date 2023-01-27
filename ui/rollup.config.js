@@ -18,6 +18,7 @@ export default {
     assetFileNames: "[hash][extname]",
     format: "es",
     dir: "dist",
+    sourcemap: !production,
   },
   watch: {
     clearScreen: false,
