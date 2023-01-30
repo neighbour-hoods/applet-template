@@ -79,12 +79,12 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
       }
       else {
         const clonedSensemakerCell = (allSensemakerClones[0] as { "Cloned": Cell }).Cloned;
-        clonedSensemakerRoleName = clonedSensemakerCell.name!;
+        clonedSensemakerRoleName = clonedSensemakerCell.clone_id!;
       }
       // now that we've cloned, we should be able to successfully pass subsequent execution of this method
       // return await this.firstUpdated()
 
-      const appAgentWebsocket: AppAgentWebsocket = await AppAgentWebsocket.connect(this.appWebsocket, "todo-sensemaker");
+      const appAgentWebsocket: AppAgentWebsocket = await AppAgentWebsocket.connect(this.appWebsocket, this.appInfo.installed_app_id);
       const sensemakerService = new SensemakerService(appAgentWebsocket, clonedSensemakerRoleName);
       this._sensemakerStore = new SensemakerStore(sensemakerService);
 
