@@ -64,7 +64,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
       if (allSensemakerClones.length === 0) {
         console.debug(`Cloning new Cell for ${SENSEMAKER_ROLE_NAME}`)
         const clonedSensemakerCell = await this.appWebsocket.createCloneCell({
-          app_id: 'provider-sensemaker',
+          app_id: this.appInfo.installed_app_id,
           role_name: SENSEMAKER_ROLE_NAME,
           modifiers: {
             network_seed: '',
