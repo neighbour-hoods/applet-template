@@ -99,7 +99,13 @@ npm run package
 
 You'll have the `provider.webhapp` in `workdir`. This is what you should distribute so that the Holochain Launcher can install it.
 
-You will also have its subcomponent `provider.happ` in the same folder`.
+You will also have its subcomponent `provider.happ` in the same folder.
+
+## Troubleshooting
+
+### Blank white window when running application UI
+
+This is caused by an [upstream issue with Tauri](https://github.com/tauri-apps/tauri/issues/5143) seemingly affecting OSX and Linux environments. You should prepend any commands that run UI windows (eg. `npm start`) with `WEBKIT_DISABLE_COMPOSITING_MODE=1`.
 
 ## Documentation
 
