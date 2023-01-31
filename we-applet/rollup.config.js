@@ -1,3 +1,4 @@
+import path from 'path';
 import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import replace from "@rollup/plugin-replace";
@@ -8,7 +9,7 @@ import { importMetaAssets } from "@web/rollup-plugin-import-meta-assets";
 import { terser } from "rollup-plugin-terser";
 
 export default {
-  input: "out-tsc/index.js",
+  input: "out-tsc/we-applet/src/index.js",
   output: {
     format: "es",
     dir: "dist",
@@ -26,6 +27,7 @@ export default {
     nodeResolve({
       browser: true,
       preferBuiltins: false,
+      modulePaths: [path.resolve(__dirname, './out-tsc'), path.resolve(__dirname, './dist')],
     }),
     replace({
       "process.env.NODE_ENV": '"production"',

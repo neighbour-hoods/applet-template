@@ -1,5 +1,6 @@
 import { AppletConfigInput, ConfigCulturalContext, ConfigMethod, ConfigResourceType, ConfigThreshold, Dimension, Range } from '@neighbourhoods/sensemaker-lite-types'
 
+// This is the applet config for the todo applet, but provides an outline of how to create your own applet config
 const importanceRange: Range = {
     "name": "1-scale",
     "kind": {
@@ -26,7 +27,7 @@ const totalImportanceDimension = {
 
 const taskItemResourceType: ConfigResourceType = {
     "name": "task_item",
-    "base_types": [{ "id": 0, "zome_id": 0, "visibility": { "Public": null } }],
+    "base_types": [{ "entry_index": 0, "zome_index": 0, "visibility": { "Public": null } }],
     "dimensions": [importanceDimension]
 }
 

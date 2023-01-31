@@ -13,10 +13,10 @@
     "sourceMap": true,
     "inlineSources": true,
     "incremental": true,
-    "outDir": "out-tsc",
-    "rootDir": "./src",
+    "outDir": "./out-tsc",
+    "rootDir": "../",
     "declaration": true,
     "skipLibCheck": true,
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/*.ts", "src/**/*.ts", "../ui/src", "../ui/src/*.ts"]
 }

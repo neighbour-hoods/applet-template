@@ -1,16 +1,13 @@
 import { Task, WrappedEntry, WrappedTaskWithAssessment } from "./types";
-import {
-    Dictionary,
-  } from '@holochain-open-dev/core-types';
+import { encodeHashToBase64 } from '@holochain/client'
 import { Assessment } from "@neighbourhoods/sensemaker-lite-types";
-import { serializeHash } from "@holochain-open-dev/utils";
 
-function addMyAssessmentsToTasks(myPubKey: string, tasks: WrappedEntry<Task>[], assessments: Dictionary<Array<Assessment>>): WrappedTaskWithAssessment[] {
+function addMyAssessmentsToTasks(myPubKey: string, tasks: WrappedEntry<Task>[], assessments: Record<string, Array<Assessment>>): WrappedTaskWithAssessment[] {
     const tasksWithMyAssessments = tasks.map(task => {
-      const assessmentsForTask = assessments[serializeHash(task.entry_hash)]
+      const assessmentsForTask = assessments[encodeHashToBase64(task.entry_hash)]
       let myAssessment
       if (assessmentsForTask) {
-        myAssessment = assessmentsForTask.find(assessment => serializeHash(assessment.author) === myPubKey)
+        myAssessment = assessmentsForTask.find(assessment => encodeHashToBase64(assessment.author) === myPubKey)
       }
       else {
         myAssessment = undefined
