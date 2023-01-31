@@ -1,5 +1,23 @@
 # applet-template
+
 This repository is a template for creating nh-we applets. It is meant to be cloned and provide the basic repository structure and scripts for developing and testing your nh-we applets.
+
+<!-- MarkdownTOC -->
+
+- [getting started](#getting-started)
+- [testing your applet in We](#testing-your-applet-in-we)
+- [Environment Setup](#environment-setup)
+- [Bootstrapping a network](#bootstrapping-a-network)
+- [Running an agent](#running-an-agent)
+- [Running the DNA tests](#running-the-dna-tests)
+- [Building the DNA](#building-the-dna)
+- [Package](#package)
+- [Troubleshooting](#troubleshooting)
+    - [Blank white window when running application UI](#blank-white-window-when-running-application-ui)
+- [Documentation](#documentation)
+
+<!-- /MarkdownTOC -->
+
 
 ## getting started
 1. set up your development environment by following the steps in [Environment Setup](#environment-setup)
