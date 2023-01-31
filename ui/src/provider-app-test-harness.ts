@@ -19,6 +19,7 @@ import { get } from 'svelte/store';
 import { ProviderStore } from './provider-store';
 import { SensemakerService, SensemakerStore } from '@neighbourhoods/nh-we-applet';
 import { ProviderApp } from './index';
+import { CreateOrJoinNh } from './create-or-join-nh';
 import appletConfig from './appletConfig'
 
 const SENSEMAKER_ROLE_NAME = "sensemaker"
@@ -45,6 +46,11 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
   @property()
   _sensemakerStore!: SensemakerStore;
 
+  @property()
+  isSensemakerCloned: boolean = false;
+
+  @property()
+  agentPubkey!: string;
 
   // on the first update, setup any networking connections required for app execution
   // async firstUpdated(): Promise<void> {
@@ -52,51 +58,13 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     // connect to the conductor
     try {
       await this.connectHolochain()
-      const installedSensemakerCells = (this.appInfo as AppInfo).cell_info[SENSEMAKER_ROLE_NAME]
-      
-      // check if sensemaker has been cloned yet
-      let allSensemakerClones = installedSensemakerCells.filter((cellInfo) => "Cloned" in cellInfo);
-      let provisionedSensemakerCells: CellInfo[] = installedSensemakerCells.filter((cellInfo) => "Provisioned" in cellInfo);
-      const sensemakerCell: Cell = (provisionedSensemakerCells[0] as { "Provisioned": Cell }).Provisioned;
-      let clonedSensemakerRoleName: RoleName;
-
-      // if it hasn't been cloned yet, clone it
-      if (allSensemakerClones.length === 0) {
-        console.debug(`Cloning new Cell for ${SENSEMAKER_ROLE_NAME}`)
-        const clonedSensemakerCell = await this.appWebsocket.createCloneCell({
-          app_id: this.appInfo.installed_app_id,
-          role_name: SENSEMAKER_ROLE_NAME,
-          modifiers: {
-            network_seed: '',
-            properties: {
-              community_activator: encodeHashToBase64(sensemakerCell.cell_id[1])
-            },
-            origin_time: Date.now(),
-          },
-          name: 'sensemaker-clone',
-        });
-        clonedSensemakerRoleName = clonedSensemakerCell.role_name!;
-      }
-      else {
-        const clonedSensemakerCell = (allSensemakerClones[0] as { "Cloned": Cell }).Cloned;
-        clonedSensemakerRoleName = clonedSensemakerCell.clone_id!;
-      }
-      // now that we've cloned, we should be able to successfully pass subsequent execution of this method
-      // return await this.firstUpdated()
-
-      const appAgentWebsocket: AppAgentWebsocket = await AppAgentWebsocket.connect(this.appWebsocket, this.appInfo.installed_app_id);
-      const sensemakerService = new SensemakerService(appAgentWebsocket, clonedSensemakerRoleName);
-      this._sensemakerStore = new SensemakerStore(sensemakerService);
-
-      // register the applet config
-      await this._sensemakerStore.registerApplet(appletConfig)
 
       const providerCellInfo: CellInfo = this.appInfo.cell_info[PROVIDER_ROLE_NAME][0]
-      const providerCell: Cell = (providerCellInfo as { "Provisioned": Cell }).Provisioned;
-
 
       // construct the provider store
       if (providerCellInfo) {
+        const providerCell: Cell = (providerCellInfo as { "Provisioned": Cell }).Provisioned;
+        this.agentPubkey = encodeHashToBase64(providerCell.cell_id[1]);
         this._providerStore = new ProviderStore(await AppAgentWebsocket.connect(
           this.appWebsocket,
           this.appInfo.installed_app_id,
@@ -105,22 +73,76 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
         throw new Error("Unable to detect provider cell")
       }
 
-      // initialize the sensemaker store so that the UI knows about assessments and other sensemaker data
-      // await this.updateSensemakerState()
+      const installedSensemakerCells = (this.appInfo as AppInfo).cell_info[SENSEMAKER_ROLE_NAME]
+
+      // check if sensemaker has been cloned yet
+      let allSensemakerClones = installedSensemakerCells.filter((cellInfo) => "Cloned" in cellInfo);
+      if (allSensemakerClones.length > 0) {
+        this.isSensemakerCloned = true;
+        const clonedSensemakerCell = (allSensemakerClones[0] as { "Cloned": Cell }).Cloned;
+        const clonedSensemakerRoleName = clonedSensemakerCell.clone_id!;
+        await this.initializeSensemakerStore(clonedSensemakerRoleName);
+        await this.updateSensemakerState();
+        this.loading = false;
+      }
     }
     catch (e) {
       console.error(e)
     }
+  }
+
+  async initializeSensemakerStore(clonedSensemakerRoleName: string) {
+    const appAgentWebsocket: AppAgentWebsocket = await AppAgentWebsocket.connect(this.appWebsocket, "todo-sensemaker");
+    const sensemakerService = new SensemakerService(appAgentWebsocket, clonedSensemakerRoleName)
+    this._sensemakerStore = new SensemakerStore(sensemakerService);
+  }
+  
+  async cloneSensemakerCell(ca_pubkey: string) {
+    const clonedSensemakerCell: InstalledCell = await this.appWebsocket.createCloneCell({
+      app_id: this.appInfo.installed_app_id,
+      role_name: SENSEMAKER_ROLE_NAME,
+      modifiers: {
+        network_seed: '',
+        properties: {
+          community_activator: ca_pubkey
+        },
+      },
+      name: `${SENSEMAKER_ROLE_NAME}-clone`,
+    });
+    this.isSensemakerCloned = true;
+    await this.initializeSensemakerStore(clonedSensemakerCell.role_name)
+  }
+
+  async createNeighbourhood(_e: CustomEvent) {
+    await this.cloneSensemakerCell(this.agentPubkey)
+    const _todoConfig = await this._sensemakerStore.registerApplet(appletConfig);
+    await this.updateSensemakerState()
     this.loading = false;
   }
 
+  async joinNeighbourhood(e: CustomEvent) {
+    await this.cloneSensemakerCell(e.detail.newValue)
+    console.log('successfully cloned sensemaker cell')
+    // wait some time for the dht to sync, otherwise checkIfAppletConfigExists returns null
+    setTimeout(async () => {
+      const _todoConfig = await this._sensemakerStore.checkIfAppletConfigExists("todo_applet")
+      await this.updateSensemakerState()
+      this.loading = false;
+    }, 2000)
+  }
+
   render() {
-    if (this.loading)
+    if (this.isSensemakerCloned && this.loading)
       return html`
         <mwc-circular-progress indeterminate></mwc-circular-progress>
       `;
+    if (!this.isSensemakerCloned)
+      return html`
+      <create-or-join-nh @create-nh=${this.createNeighbourhood} @join-nh=${this.joinNeighbourhood}></create-or-join-nh>
+    `;
     return html`
       <main>
+        <h3>My Pubkey: ${this.agentPubkey}</h3>
         <div class="home-page">
           <provider-app .sensemakerStore=${this._sensemakerStore} .providerStore=${this._providerStore}></provider-app>
         </div>
@@ -153,6 +175,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
   static get scopedElements() {
     return {
       'provider-app': ProviderApp,
+      'create-or-join-nh': CreateOrJoinNh,
     };
   }
 
