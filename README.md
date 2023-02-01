@@ -4,7 +4,7 @@ This repository is a template for creating nh-we applets. It is meant to be clon
 ## getting started
 1. set up your development environment by following the steps in [Environment Setup](#environment-setup)
 1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-we-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-we-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
-1. Clone this repository
+1. Clone this repository & run `npm i`
 1. add your zome code
 1. create your applet config and add it to both [`./ui/src/appletConfig.ts`](./ui/src/appletConfig.ts) & [`./we-applet/src/appletConfig.ts`](./we-applet/src/appletConfig.ts)
 1. replace all instances of `provider` (including in file or directory names)
