@@ -9,3 +9,8 @@ pub fn create_provider_entry(
     let _entry_hash = hash_entry(provider_entry.clone())?;
     Ok(action_hash)
 }
+
+#[hdk_extern]
+pub fn all_provider_resource_entry_hashes(_: ()) -> ExternResult<Vec<EntryHash>> {
+    Ok(vec![])
+}

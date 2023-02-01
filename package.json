@@ -7,7 +7,7 @@
     "we-applet"
   ],
   "scripts": {
-    "start": "AGENTS=1 npm run network",
+    "start": "AGENTS=2 npm run network",
     "network": "hc s clean && npm run build:test-happ && concurrently \"npm run build:watch -w ui\" \"npm run launch:happ\"",
     "start:agent": "cross-env HC_PORT=$(port) HC_ADMIN_PORT=$(port) concurrently -k \"npm run start:happ\" \"sleep 5 && npm run start -w ui\"",
     "launch:happ": "RUST_LOG=warn echo \"pass\" | hc launch --piped -n $AGENTS ./workdir/sensemaker-enabled/provider-sensemaker.happ -w --ui-path ui/dist network mdns",
