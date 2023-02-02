@@ -5,14 +5,14 @@ This repository is a template for creating nh-we applets. It is meant to be clon
 1. set up your development environment by following the steps in [Environment Setup](#environment-setup)
 1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-we-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-we-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
 1. Clone this repository & run `npm i`
-1. add your zome code (you need a fully functioning Holochain hApp, then copy stuff from `dna`, `tests` and `ui` folders)
+1. add your zome code (you need a fully functioning Holochain hApp, then copy stuff from `dna`, `tests` and `ui` folders. You can also try [Holochain Scaffolding tool](https://github.com/holochain/scaffolding/) to create a simple hApp)
 1. replace all instances of `provider` to match your hApp zome name (including in file or directory names)
 1. create your applet config and add it to both [`./ui/src/appletConfig.ts`](./ui/src/appletConfig.ts) & [`./we-applet/src/appletConfig.ts`](./we-applet/src/appletConfig.ts). See [Creating Applet Config](#applet-config)
 1. build your front end store object (see `providerStore.ts`)
 1. test your UI with `npm run start`
 1. package your applet as a `.webhapp` file to be imported by nh-we with `npm run package`
 
-## testing your applet in We
+## testing your applet in NH Launcher
 once you are ready to test your applet in we, you will need to run nh-we in developer mode to upload the webhapp file. To do that:
 1. git clone [`nh-we`](https://github.com/neighbour-hoods/nh-we)
 1. git fetch and switch to the `develop` branch
@@ -119,6 +119,7 @@ This repository is using this tooling:
 
 - [NPM Workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces/): npm v7's built-in monorepo capabilities.
 - [hc](https://github.com/holochain/holochain/tree/develop/crates/hc): Holochain CLI to easily manage Holochain development instances.
+- [Holochain scaffolding](https://github.com/holochain/scaffolding/): Scaffolding tool used to create simple hApps.
 - [@holochain/tryorama](https://www.npmjs.com/package/@holochain/tryorama): test framework.
 - [@holochain/client](https://www.npmjs.com/package/@holochain/client): client library to connect to Holochain from the UI.
 - [@holochain-playground/cli](https://www.npmjs.com/package/@holochain-playground/cli): introspection tooling to understand what's going on in the Holochain nodes.

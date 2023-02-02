@@ -1,7 +1,7 @@
 # applet execution
-There are two main contexts in which your applet will be executed: in `We` as an applet (contained in the `we-applet/` directory) and as a web app for development purposes (in the `ui/` directory, which also contains the ui components and state management). The reason for this separation is to speed up the development cycle of your frontend. Whenever you test your applet in we, you need to build it as a `.webhapp` and install it directly to `We`, which is time consuming. 
+There are two main contexts in which your applet will be executed: in `NH Launcher` (currently a fork of `We`) as an applet (contained in the `we-applet/` directory) and as a web app for development purposes (in the `ui/` directory, which also contains the ui components and state management). The reason for this separation is to speed up the development cycle of your frontend. Whenever you test your applet in we, you need to build it as a `.webhapp` and install it directly to `NH Laucnher`, which is time consuming. 
 
-## without `We`
+## without `NH Launcher`
 By running `npm run start` you spawn a conductor and initialize a sensemaker cell and a provider cell, and launch the ui as a web app directly in the browser. 
 
 In `package.json`, this is done by the following commands:
@@ -26,5 +26,5 @@ It also sets up a [`ProviderStore`](./ui/src/provider-store.ts) object since thi
 
 Lastly, it registers your applet config to the sensemaker cell.
 
-## with `We`
-In the `we-applet` directory, you will find the code that bundles the app UI as a we applet (`.webhapp` file) which can be imported by `We`. `provider-applet.ts` imports the `ProviderApp` class from the `ui/` directory, which is a separate npm module inside the npm workspace, and treats it like any other lit webcomponent.
+## with `NH Laucnher`
+In the `we-applet` directory, you will find the code that bundles the app UI as a we applet (`.webhapp` file) which can be imported by `NH Launcher`. `provider-applet.ts` imports the `ProviderApp` class from the `ui/` directory, which is a separate npm module inside the npm workspace, and treats it like any other lit webcomponent.
