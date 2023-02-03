@@ -19,7 +19,11 @@
     "start:ui": "npm run start -w ui",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "npm run download-sensemaker",
-    "clean": "nix-shell --run hn-rust-flush; rimraf workdir/sensemaker.dna; rimraf ui/node_modules; rimraf we-applet/node_modules; rimraf node_modules"
+    "clean:build": "nix-shell --run hn-rust-flush",
+    "clean:downloaded": "npm run clean:downloaded:sensemaker; exit 0",
+    "clean:downloaded:sensemaker": "rimraf workdir/sensemaker.dna",
+    "clean:modules": "rimraf ui/node_modules; rimraf we-applet/node_modules; rimraf node_modules",
+    "clean": "npm run clean:downloaded; npm run clean:build; npm run clean:modules"
   },
   "devDependencies": {
     "@holochain-playground/cli": "^0.0.11",
