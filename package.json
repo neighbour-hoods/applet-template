@@ -1,11 +1,6 @@
 {
   "name": "provider-dev",
   "private": true,
-  "workspaces": [
-    "ui",
-    "tests",
-    "we-applet"
-  ],
   "scripts": {
     "start": "AGENTS=2 npm run network",
     "network": "hc s clean && npm run build:test-happ && concurrently \"npm run build:watch -w ui\" \"npm run launch:happ\"",
@@ -22,6 +17,7 @@
     "playground": "run-singleton \"holochain-playground\"",
     "download-sensemaker": "[ ! -f \"workdir/sensemaker.dna\" ] && curl -L --output workdir/sensemaker.dna https://github.com/neighbour-hoods/sensemaker-lite/releases/download/v0.0.3-alpha/sensemaker.dna; exit 0",
     "start:ui": "npm run start -w ui",
+    "preinstall": "npx only-allow pnpm",
     "postinstall": "npm run download-sensemaker",
     "clean": "nix-shell --run hn-rust-flush; rimraf workdir/sensemaker.dna; rimraf ui/node_modules; rimraf we-applet/node_modules; rimraf node_modules"
   },
