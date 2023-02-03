@@ -13,7 +13,7 @@ import {
   Cell,
   RoleName,
 } from '@holochain/client';
-import '@material/mwc-circular-progress';
+import { CircularProgress } from '@scoped-elements/material-web';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { get } from 'svelte/store';
 import { SensemakerService, SensemakerStore } from '@neighbourhoods/nh-we-applet';
@@ -177,6 +177,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     return {
       'provider-app': ProviderApp,
       'create-or-join-nh': CreateOrJoinNh,
+      'mwc-circular-progress': CircularProgress,
     };
   }
 
