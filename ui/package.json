@@ -24,12 +24,15 @@
     "@material/mwc-button": "^0.25.3",
     "@material/mwc-circular-progress": "^0.25.3",
     "@msgpack/msgpack": "^2.7.2",
+    "@neighbourhoods/component-create-or-join-nh": "workspace:*",
     "@neighbourhoods/provider-component": "workspace:*",
     "@neighbourhoods/provider-store": "workspace:*",
     "@neighbourhoods/sensemaker-lite-types": "0.1.0",
+    "@neighbourhoods/nh-we-applet": "^0.0.5",
     "@type-craft/content": "^0.0.7",
     "@type-craft/title": "^0.0.8",
-    "lit": "^2.0.2"
+    "lit": "^2.0.2",
+    "svelte": "*"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.0",

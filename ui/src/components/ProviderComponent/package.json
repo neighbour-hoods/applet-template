@@ -1,0 +1,11 @@
+{
+	"name": "@neighbourhoods/provider-component",
+	"version": "0.0.1",
+	"type": "module",
+	"main": "./ProviderComponent.ts",
+	"dependencies": {
+		"@lit-labs/context": "^0.1.2",
+		"@neighbourhoods/provider-store": "workspace:*",
+		"lit": "^2.0.2"
+	}
+}

@@ -2,15 +2,14 @@ import { contextProvided } from "@lit-labs/context";
 import { property } from "lit/decorators.js";
 import { ScopedElementsMixin } from "@open-wc/scoped-elements";
 import { LitElement, html } from "lit";
-import { providerStoreContext } from "../contexts";
-import { ProviderStore } from "../provider-store";
+import { ProviderStore, providerStoreContext } from "@neighbourhoods/provider-store";
 
 export class ProviderComponent extends ScopedElementsMixin(LitElement) {
     @contextProvided({ context: providerStoreContext, subscribe: true })
     @property({attribute: false})
     public  providerStore!: ProviderStore
 
-    
+
     render() {
         return html`
             <div>
@@ -18,7 +17,7 @@ export class ProviderComponent extends ScopedElementsMixin(LitElement) {
             </div>
         `
     }
-    
+
     static get scopedElements() {
         return {
         };

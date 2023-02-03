@@ -7,7 +7,10 @@ import {
   encodeHashToBase64,
   Cell,
 } from '@holochain/client';
-import { ProviderService } from './provider-service';
+import { createContext } from '@lit-labs/context';
+
+import { ProviderService } from './ProviderService';
+export { ProviderService }
 
 // the ProviderStore manages the Writable svelte/store object, like accessing and updating it
 export class ProviderStore {
@@ -43,3 +46,8 @@ export class ProviderStore {
     return this.service.fetchAllResources();
   }
 }
+
+// Component context for reading relevant ProviderStore instance
+export const providerStoreContext = createContext<ProviderStore>(
+	'provider-store-context'
+);
