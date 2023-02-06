@@ -34,7 +34,7 @@ The Applet Config is where the **Sensemaker compatible** social interactions of 
 
 - **Dimension**s and **Range**s: to define in what ways your users can assess (for example, react or rate) your applet resources (computed dimensions can only receive values from Methods)
 - **ConfigResourceType**s: they allow you to map hApp entry-types to sensemaker resources that can receive assessments
-- **ConfigMethod**s: they allow performing computations on top of existing __input_dimensions__ into an __output_dimension__, following a __program__ brick. 
+- **ConfigMethod**s: they allow performing computations on top of existing __input_dimensions__ into an __output_dimension__, following a __program__ brick (find more about the supported bricks at [this link](https://github.com/neighbour-hoods/sensemaker-lite/blob/develop/docs/program_bricks.md)). 
 - **ConfigThreshold**s: they define how a Cultural Context will filter resources to be shown
 - **ConfigCulturalContext**s: these allow the SenseMaker to filter and order resources according to rules defined in Thresholds and ordered according to __order_by__.
 - **AppletConfigInput**: this object holds together all defined configurations for your Applet.
