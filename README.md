@@ -1,11 +1,13 @@
 # applet-template
 This repository is a template for creating nh-we applets. It is meant to be cloned and provide the basic repository structure and scripts for developing and testing your nh-we applets.
 
+DISCLAIMER: Please note this is only a template that mostly provides repository structure and helpful npm scripts, you will still need to write your own zome functions, entry types, validation functions, and the relevant tests. To speed up this process you can try the [Holochain Scaffolding tool](https://github.com/holochain/scaffolding/) to get basic CRUD functionality and tests scenarios. However, you will still have to implement much of the logic of your application.
+
 ## getting started
 1. set up your development environment by following the steps in [Environment Setup](#environment-setup)
 1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-we-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-we-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
 1. Clone this repository & run `npm i`
-1. add your zome code (you need a fully functioning Holochain hApp, then copy stuff from `dna`, `tests` and `ui` folders. You can also try [Holochain Scaffolding tool](https://github.com/holochain/scaffolding/) to create a simple hApp)
+1. add your zome code (copy/edit files under to `dna`, `tests` and `ui` folders)
 1. replace all instances of `provider` to match your hApp zome name (including in file or directory names)
 1. create your applet config and add it to both [`./ui/src/appletConfig.ts`](./ui/src/appletConfig.ts) & [`./we-applet/src/appletConfig.ts`](./we-applet/src/appletConfig.ts). See [Creating Applet Config](#applet-config)
 1. build your front end store object (see `providerStore.ts`)
@@ -28,9 +30,9 @@ once you are ready to test your applet in we, you will need to run nh-we in deve
     - ![select applet file](./images/select-applet-file.png)
 
 ## Applet Config
-The Applet Config is where the social interactions of your applet are defined, you can specify:
+The Applet Config is where the **Sensemaker compatible** social interactions of your applet are defined, you can specify:
 
-- **Dimension**s and **Range**s: to define in what ways your users can assess your applet resources (computed dimensions can only receive values from Methods)
+- **Dimension**s and **Range**s: to define in what ways your users can assess (for example, react or rate) your applet resources (computed dimensions can only receive values from Methods)
 - **ConfigResourceType**s: they allow you to map hApp entry-types to sensemaker resources that can receive assessments
 - **ConfigMethod**s: they allow performing computations on top of existing __input_dimensions__ into an __output_dimension__, following a __program__ brick. 
 - **ConfigThreshold**s: they define how a Cultural Context will filter resources to be shown
