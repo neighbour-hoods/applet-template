@@ -4,7 +4,7 @@ This repository is a template for creating nh-we applets. It is meant to be clon
 DISCLAIMER: Please note this is only a template that mostly provides repository structure and helpful npm scripts, you will still need to write your own zome functions, entry types, validation functions, and the relevant tests. To speed up this process you can try the [Holochain Scaffolding tool](https://github.com/holochain/scaffolding/) to get basic CRUD functionality and tests scenarios. However, you will still have to implement much of the logic of your application.
 
 ## getting started
-1. set up your development environment by following the steps in [Environment Setup](#environment-setup)
+1. set up your development environment by following the steps in [Environment Setup](#environment-setup), and if you are having issues with nix see [Without Nix](#without-nix)
 1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-we-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-we-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
 1. Clone this repository & run `npm i`
 1. add your zome code (copy/edit files under to `dna`, `tests` and `ui` folders)
@@ -62,6 +62,22 @@ This will install all the needed dependencies in your local environment, includi
 
 Run all the other instructions in this README from inside this nix environment, otherwise **they won't work**.
 
+### Without Nix
+It is possible to work with these repos without nix, but you will need to install the needed cargo packages to your local system. Run the following commands:
+```
+cargo install holochain --version 0.1.0
+cargo install lair_keystore --version 0.2.3
+cargo install holochain_cli_launch --version 0.0.11
+cargo install holochain_scaffolding_cli --version 0.1.6
+```
+
+make sure they are properly installed with:
+```
+holochain --version
+lair-keystore --version
+hc-launch --version
+hc-scaffold --version
+```
 ## Running the DNA tests
 
 ```bash
