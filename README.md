@@ -14,6 +14,13 @@ DISCLAIMER: Please note this is only a template that mostly provides repository 
 1. test your UI with `npm run start`
 1. package your applet as a `.webhapp` file to be imported by nh-we with `npm run package`
 
+## using the holochain scaffolding tool
+If you want to use the scaffolding tool to generate your holochain code, you can easily replace the `dnas` directory in this repository with the `dnas` directory generated through the scaffolding tool. In the future we hope to have a smoother integration between the two, but for now the steps look like:
+1. create a separate repo
+2. inside that repo, run `hc scaffold example forum` (or more specific uses of the command)
+3. copy the generated `dnas` folder and replace the `dnas` folder in this repository with that one.
+4. replace the root level `Cargo.toml` with the one from the scaffolding tool.
+5. you will still need to change references to `provider` to whatever you are calling your dnas.
 ## testing your applet in NH Launcher
 once you are ready to test your applet in we, you will need to run nh-we in developer mode to upload the webhapp file. To do that:
 1. git clone [`nh-launcher`](https://github.com/neighbour-hoods/nh-launcher)
