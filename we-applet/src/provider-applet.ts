@@ -5,7 +5,7 @@ import { LitElement, html, css } from "lit";
 import { AppletInfo, SensemakerStore } from "@neighbourhoods/nh-we-applet";
 import { ProviderApp, ProviderStore } from "@neighbourhoods/provider-applet";
 import appletConfig from './appletConfig';
-import { AppAgentWebsocket, AppWebsocket, Cell } from "@holochain/client";
+import { AppAgentWebsocket, AppWebsocket, CellType, ProvisionedCell } from "@holochain/client";
 
 const PROVIDER_ROLE_NAME = 'provider';
 
@@ -29,7 +29,7 @@ export class ProviderApplet extends ScopedElementsMixin(LitElement) {
     try {
       const todoAppletInfo = this.appletAppInfo[0];
       const cellInfo = todoAppletInfo.appInfo.cell_info[PROVIDER_ROLE_NAME][0]
-      const providerCell = (cellInfo as { "Provisioned": Cell }).Provisioned;
+      const providerCell = (cellInfo as { [CellType.Provisioned]: ProvisionedCell }).provisioned;
 
       const maybeAppletConfig = await this.sensemakerStore.checkIfAppletConfigExists(appletConfig.name)
       if (!maybeAppletConfig) {
@@ -37,7 +37,7 @@ export class ProviderApplet extends ScopedElementsMixin(LitElement) {
       }
 
       const appWs = await AppWebsocket.connect(this.appWebsocket.client.socket.url)
-      const appAgentWebsocket: AppAgentWebsocket = await AppAgentWebsocket.connect(appWs, "provider");
+      const appAgentWebsocket: AppAgentWebsocket = await AppAgentWebsocket.connect(appWs.client.socket.url, "provider");
       this.providerStore = new ProviderStore(
         appAgentWebsocket,
         providerCell,
