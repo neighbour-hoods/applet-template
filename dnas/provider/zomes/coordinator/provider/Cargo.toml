@@ -11,6 +11,6 @@ name = "provider"
 serde = { workspace = true }
 chrono = { version = "0.4.22", default-features = false, features = ["clock", "std", "oldtime", "serde"], optional = true }
 derive_more = "0"
-provider_integrity = { path = "../../integrity_zomes/provider_integrity" }
+provider_integrity = { workspace = true }
 
 hdk = { workspace = true }
