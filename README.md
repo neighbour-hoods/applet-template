@@ -16,9 +16,9 @@ DISCLAIMER: Please note this is only a template that mostly provides repository 
 
 ## testing your applet in NH Launcher
 once you are ready to test your applet in we, you will need to run nh-we in developer mode to upload the webhapp file. To do that:
-1. git clone [`nh-we`](https://github.com/neighbour-hoods/nh-we)
+1. git clone [`nh-launcher`](https://github.com/neighbour-hoods/nh-launcher)
 1. git fetch and switch to the `develop` branch
-1. follow steps in the [read me](https://github.com/neighbour-hoods/nh-we/tree/develop) (`nix-shell`, `npm i`, `npm run start`) to get we running in dev mode (it should launch into the browser)
+1. follow steps in the [read me](https://github.com/neighbour-hoods/nh-launcher/tree/develop) (`nix develop`, `npm i`, `npm run start`) to get we running in dev mode (it should launch into the browser)
 1. create a we group
     - ![create group button](./images/add-group.png)
 1. create your user in the group
@@ -43,53 +43,24 @@ In the future we are providing a visual Wizard to make the creationg of such con
 
 ## Environment Setup
 
-1. Install the holochain dev environment (only nix-shell is required): https://developer.holochain.org/docs/install/
-2. Enable Holochain cachix with:
-
+1. Install the holochain dev environment (using nix): https://developer.holochain.org/docs/install/ (see https://hackmd.io/BKCt3FckSiSDJ4aSJ1Ur6A for a more comprehensive guide, especially if you are used to using `nix-shell` and `default.nix`)
+2. Enable Nix commands and Nix flakes for your use:
 ```bash
-nix-env -iA cachix -f https://cachix.org/api/v1/install
-cachix use holochain-ci
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
 
 3. Clone this repo and `cd` inside of it.
 4. Enter the nix shell by running this in the root folder of the repository: 
 
 ```bash
-nix-shell
+nix develop
 npm install
 ```
 
 This will install all the needed dependencies in your local environment, including `holochain`, `hc` and `npm`.
 
-Run all the other instructions in this README from inside this nix-shell, otherwise **they won't work**.
-
-## Bootstrapping a network
-
-Create a whole network of nodes connected to each other and their respective UIs with.
-
-```bash
-npm run network 3
-```
-
-Substitute the "3" for the number of nodes that you want to bootstrap in your network.
-
-This will also bring up the Holochain Playground for advanced introspection of the conductors.
-
-## Running an agent
- 
-If you only want to run a single conductor and a UI connected to it:
-
-```bash
-npm start
-```
-
-To run another agent, open another terminal, and execute again:
-
-```bash
-npm start
-```
-
-Each new agent that you create this way will get assigned its own port and get connected to the other agents.
+Run all the other instructions in this README from inside this nix environment, otherwise **they won't work**.
 
 ## Running the DNA tests
 
@@ -111,7 +82,7 @@ To package the web happ:
 npm run package
 ```
 
-You'll have the `provider.webhapp` in `workdir`. This is what you should distribute so that the Holochain Launcher can install it.
+You'll have the `provider.webhapp` in `workdir`. This is what you should distribute so that the Neighbourhoods Launcher can install it.
 
 You will also have its subcomponent `provider.happ` in the same folder`.
 
