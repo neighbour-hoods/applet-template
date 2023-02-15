@@ -4,7 +4,7 @@
   "workspaces": [
     "ui",
     "tests",
-    "we-applet"
+    "nh-launcher-applet"
   ],
   "scripts": {
     "start": "AGENTS=2 npm run network",
@@ -13,7 +13,7 @@
     "launch:happ": "RUST_LOG=warn echo \"pass\" | hc launch --piped -n $AGENTS ./workdir/sensemaker-enabled/provider-sensemaker.happ -w --ui-path ui/dist network mdns",
     "test": "npm run build:happ && npm t -w tests",
     "start:happ": "concurrently \"RUST_LOG=warn echo \"pass\" | hc s --piped -f=$HC_ADMIN_PORT generate ./workdir/sensemaker-enabled/provider-sensemaker.happ --run=$HC_PORT -a provider network mdns\" \"npm run playground\"",
-    "package": "npm run build:happ && npm run build:ui && npm run package:ui -w we-applet && hc web-app pack workdir",
+    "package": "npm run build:happ && npm run build:ui && npm run package:ui -w nh-launcher-applet && hc web-app pack workdir",
     "build:happ": "npm run build:dnas && hc app pack ./workdir",
     "build:test-happ": "npm run build:dnas && hc app pack ./workdir/sensemaker-enabled",
     "build:dnas": "npm run build:zomes && hc dna pack ./dnas/provider/workdir",
@@ -23,7 +23,7 @@
     "download-sensemaker": "[ ! -f \"workdir/sensemaker.dna\" ] && curl -L --output workdir/sensemaker.dna https://github.com/neighbour-hoods/sensemaker-lite/releases/download/v0.0.4-alpha/sensemaker.dna; exit 0",
     "start:ui": "npm run start -w ui",
     "postinstall": "npm run download-sensemaker",
-    "clean": "nix-shell --run hn-rust-flush; rimraf workdir/sensemaker.dna; rimraf ui/node_modules; rimraf we-applet/node_modules; rimraf node_modules"
+    "clean": "nix-shell --run hn-rust-flush; rimraf workdir/sensemaker.dna; rimraf ui/node_modules; rimraf nh-launcher-applet/node_modules; rimraf node_modules"
   },
   "devDependencies": {
     "@holochain-playground/cli": "^0.0.11",
