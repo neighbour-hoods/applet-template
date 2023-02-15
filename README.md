@@ -43,7 +43,7 @@ In the future we are providing a visual Wizard to make the creationg of such con
 
 ## Environment Setup
 
-1. Install the holochain dev environment (using nix): https://developer.holochain.org/docs/install/
+1. Install the holochain dev environment (using nix): https://developer.holochain.org/docs/install/ (see https://hackmd.io/BKCt3FckSiSDJ4aSJ1Ur6A for a more comprehensive guide, especially if you are used to using `nix-shell` and `default.nix`)
 2. Enable Nix commands and Nix flakes for your use:
 ```bash
 mkdir -p ~/.config/nix
