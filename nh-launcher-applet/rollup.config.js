@@ -9,7 +9,7 @@ import { importMetaAssets } from "@web/rollup-plugin-import-meta-assets";
 import { terser } from "rollup-plugin-terser";
 
 export default {
-  input: "out-tsc/we-applet/src/index.js",
+  input: "out-tsc/nh-launcher-applet/src/index.js",
   output: {
     format: "es",
     dir: "dist",

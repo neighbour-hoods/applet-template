@@ -19,12 +19,12 @@
     "package": "npm run build && cd dist && bestzip ../dist.zip *"
   },
   "dependencies": {
-    "@holochain/client": "0.11.9",
+    "@holochain/client": "0.12.0",
     "@lit-labs/context": "^0.1.2",
     "@material/mwc-button": "^0.25.3",
     "@material/mwc-circular-progress": "^0.25.3",
     "@msgpack/msgpack": "^2.7.2",
-    "@neighbourhoods/sensemaker-lite-types": "0.1.0",
+    "@neighbourhoods/sensemaker-lite-types": "0.4.0",
     "@type-craft/content": "^0.0.7",
     "@type-craft/title": "^0.0.8",
     "lit": "^2.0.2"

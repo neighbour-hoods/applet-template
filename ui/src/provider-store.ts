@@ -5,7 +5,7 @@ import {
   AgentPubKeyB64,
   Record,
   encodeHashToBase64,
-  Cell,
+  ProvisionedCell,
 } from '@holochain/client';
 import { ProviderService } from './provider-service';
 
@@ -23,7 +23,7 @@ export class ProviderStore {
 
   constructor(
     protected client: AppAgentWebsocket,
-    protected providerCell: Cell,
+    protected providerCell: ProvisionedCell,
     zomeName: string = 'provider'
   ) {
     this.service = new ProviderService(

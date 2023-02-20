@@ -5,7 +5,7 @@ import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 
 import { providerStoreContext, sensemakerStoreContext } from './contexts';
 import { ProviderStore } from './provider-store';
-import { SensemakerStore } from '@neighbourhoods/nh-we-applet';
+import { SensemakerStore } from '@neighbourhoods/nh-launcher-applet';
 import { ComputeContextInput } from '@neighbourhoods/sensemaker-lite-types';
 import { ProviderComponent } from './index'
 import { get } from 'svelte/store';

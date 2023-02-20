@@ -1,6 +1,6 @@
 import { createContext } from '@lit-labs/context';
 import { ProviderStore } from './provider-store';
-import { SensemakerStore } from '@neighbourhoods/nh-we-applet';
+import { SensemakerStore } from '@neighbourhoods/nh-launcher-applet';
 
 export const providerStoreContext = createContext<ProviderStore>(
     'provider-store-context'

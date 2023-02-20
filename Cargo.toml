@@ -1,12 +1,24 @@
 [workspace]
 resolver = "2"
 members = [
-  "dna/integrity_zomes/*",
-  "dna/coordinator_zomes/*"
+  "dnas/*/zomes/integrity/*",
+  "dnas/*/zomes/coordinator/*"
 ]
+
+[workspace.dependencies]
+hdi = { version = "0.2.0" }
+hdk = { version = "0.1.0" }
+serde = "1"
+holochain = {version = "0.1.0"}
 
 [profile.dev]
 opt-level = "z"
 
 [profile.release]
 opt-level = "z"
+
+[workspace.dependencies.provider]
+path = "dnas/provider/zomes/coordinator/provider"
+
+[workspace.dependencies.provider_integrity]
+path = "dnas/provider/zomes/integrity/provider"

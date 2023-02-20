@@ -2,6 +2,6 @@
 manifest_version: "1"
 name: provider
 ui:
-  bundled: "../we-applet/ui.zip"
+  bundled: "../nh-launcher-applet/ui.zip"
 happ_manifest:
   bundled: "./provider.happ"

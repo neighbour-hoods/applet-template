@@ -7,12 +7,12 @@ integrity:
   origin_time: 2022-09-10T04:13:46.720Z
   zomes:
     - name: provider_integrity
-      bundled: ../../target/wasm32-unknown-unknown/release/provider_integrity.wasm
+      bundled: ../../../target/wasm32-unknown-unknown/release/provider_integrity.wasm
 
 coordinator:
   zomes:
     - name: provider
-      bundled: ../../target/wasm32-unknown-unknown/release/provider.wasm
+      bundled: ../../../target/wasm32-unknown-unknown/release/provider.wasm
       dependencies:
         - name: provider_integrity
 

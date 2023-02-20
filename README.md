@@ -4,8 +4,8 @@ This repository is a template for creating nh-we applets. It is meant to be clon
 DISCLAIMER: Please note this is only a template that mostly provides repository structure and helpful npm scripts, you will still need to write your own zome functions, entry types, validation functions, and the relevant tests. To speed up this process you can try the [Holochain Scaffolding tool](https://github.com/holochain/scaffolding/) to get basic CRUD functionality and tests scenarios. However, you will still have to implement much of the logic of your application.
 
 ## getting started
-1. set up your development environment by following the steps in [Environment Setup](#environment-setup)
-1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-we-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-we-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
+1. set up your development environment by following the steps in [Environment Setup](#environment-setup), and if you are having issues with nix see [Without Nix](#without-nix)
+1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-launcher-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-launcher-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
 1. Clone this repository & run `npm i`
 1. add your zome code (copy/edit files under to `dna`, `tests` and `ui` folders)
 1. replace all instances of `provider` to match your hApp zome name (including in file or directory names)
@@ -14,11 +14,18 @@ DISCLAIMER: Please note this is only a template that mostly provides repository 
 1. test your UI with `npm run start`
 1. package your applet as a `.webhapp` file to be imported by nh-we with `npm run package`
 
+## using the holochain scaffolding tool
+If you want to use the scaffolding tool to generate your holochain code, you can easily replace the `dnas` directory in this repository with the `dnas` directory generated through the scaffolding tool. In the future we hope to have a smoother integration between the two, but for now the steps look like:
+1. create a separate repo
+2. inside that repo, run `hc scaffold example forum` (or more specific uses of the command)
+3. copy the generated `dnas` folder and replace the `dnas` folder in this repository with that one.
+4. replace the root level `Cargo.toml` with the one from the scaffolding tool.
+5. you will still need to change references to `provider` to whatever you are calling your dnas.
 ## testing your applet in NH Launcher
 once you are ready to test your applet in we, you will need to run nh-we in developer mode to upload the webhapp file. To do that:
-1. git clone [`nh-we`](https://github.com/neighbour-hoods/nh-we)
+1. git clone [`nh-launcher`](https://github.com/neighbour-hoods/nh-launcher)
 1. git fetch and switch to the `develop` branch
-1. follow steps in the [read me](https://github.com/neighbour-hoods/nh-we/tree/develop) (`nix-shell`, `npm i`, `npm run start`) to get we running in dev mode (it should launch into the browser)
+1. follow steps in the [read me](https://github.com/neighbour-hoods/nh-launcher/tree/develop) (`nix develop`, `npm i`, `npm run start`) to get we running in dev mode (it should launch into the browser)
 1. create a we group
     - ![create group button](./images/add-group.png)
 1. create your user in the group
@@ -43,54 +50,41 @@ In the future we are providing a visual Wizard to make the creationg of such con
 
 ## Environment Setup
 
-1. Install the holochain dev environment (only nix-shell is required): https://developer.holochain.org/docs/install/
-2. Enable Holochain cachix with:
-
+1. Install the holochain dev environment (using nix): https://developer.holochain.org/docs/install/ (see https://hackmd.io/BKCt3FckSiSDJ4aSJ1Ur6A for a more comprehensive guide, especially if you are used to using `nix-shell` and `default.nix`)
+2. Enable Nix commands and Nix flakes for your use:
 ```bash
-nix-env -iA cachix -f https://cachix.org/api/v1/install
-cachix use holochain-ci
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
 
 3. Clone this repo and `cd` inside of it.
 4. Enter the nix shell by running this in the root folder of the repository: 
 
 ```bash
-nix-shell
+nix develop
 npm install
 ```
 
 This will install all the needed dependencies in your local environment, including `holochain`, `hc` and `npm`.
 
-Run all the other instructions in this README from inside this nix-shell, otherwise **they won't work**.
+Run all the other instructions in this README from inside this nix environment, otherwise **they won't work**.
 
-## Bootstrapping a network
-
-Create a whole network of nodes connected to each other and their respective UIs with.
-
-```bash
-npm run network 3
+### Without Nix
+It is possible to work with these repos without nix, but you will need to install the needed cargo packages to your local system. Run the following commands:
+```
+cargo install holochain --version 0.1.0
+cargo install lair_keystore --version 0.2.3
+cargo install holochain_cli_launch --version 0.0.11
+cargo install holochain_scaffolding_cli --version 0.1.6
 ```
 
-Substitute the "3" for the number of nodes that you want to bootstrap in your network.
-
-This will also bring up the Holochain Playground for advanced introspection of the conductors.
-
-## Running an agent
- 
-If you only want to run a single conductor and a UI connected to it:
-
-```bash
-npm start
+make sure they are properly installed with:
 ```
-
-To run another agent, open another terminal, and execute again:
-
-```bash
-npm start
+holochain --version
+lair-keystore --version
+hc-launch --version
+hc-scaffold --version
 ```
-
-Each new agent that you create this way will get assigned its own port and get connected to the other agents.
-
 ## Running the DNA tests
 
 ```bash
@@ -111,7 +105,7 @@ To package the web happ:
 npm run package
 ```
 
-You'll have the `provider.webhapp` in `workdir`. This is what you should distribute so that the Holochain Launcher can install it.
+You'll have the `provider.webhapp` in `workdir`. This is what you should distribute so that the Neighbourhoods Launcher can install it.
 
 You will also have its subcomponent `provider.happ` in the same folder`.
 
