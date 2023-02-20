@@ -1,8 +1,8 @@
 [workspace]
 resolver = "2"
 members = [
-  "dna/integrity_zomes/*",
-  "dna/coordinator_zomes/*"
+  "dnas/*/zomes/integrity/*",
+  "dnas/*/zomes/coordinator/*"
 ]
 
 [workspace.dependencies]
@@ -16,3 +16,9 @@ opt-level = "z"
 
 [profile.release]
 opt-level = "z"
+
+[workspace.dependencies.provider]
+path = "dnas/provider/zomes/coordinator/provider"
+
+[workspace.dependencies.provider_integrity]
+path = "dnas/provider/zomes/integrity/provider"

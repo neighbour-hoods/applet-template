@@ -5,18 +5,18 @@ import {
   AppInfo,
 } from "@holochain/client";
 import {
-  WeApplet,
+  NhLauncherApplet,
   AppletRenderers,
   WeServices,
   AppletInfo,
-} from "@neighbourhoods/nh-we-applet";
+} from "@neighbourhoods/nh-launcher-applet";
 import { ProviderStore } from "@neighbourhoods/provider-applet";
 import { ProviderApplet } from "./provider-applet";
 import { AppAgentWebsocket } from '@holochain/client';
 
 const PROVIDER_ROLE_NAME = 'provider'
 
-const providerApplet: WeApplet = {
+const providerApplet: NhLauncherApplet = {
   async appletRenderers(
     appWebsocket: AppWebsocket,
     adminWebsocket: AdminWebsocket,

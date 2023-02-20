@@ -15,8 +15,7 @@ import {
 import { CircularProgress } from '@scoped-elements/material-web';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { get } from 'svelte/store';
-import { SensemakerService, SensemakerStore } from '@neighbourhoods/nh-we-applet';
-
+import { SensemakerService, SensemakerStore } from '@neighbourhoods/nh-launcher-applet';
 import { ProviderStore } from '@neighbourhoods/provider-store';
 import { CreateOrJoinNh } from '@neighbourhoods/component-create-or-join-nh';
 import { ProviderApp } from './provider-app';
