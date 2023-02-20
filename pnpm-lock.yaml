@@ -1,4 +1,4 @@
-lockfileVersion: 5.4
+lockfileVersion: 5.3
 
 importers:
 
@@ -19,6 +19,75 @@ importers:
       new-port-cli: 1.0.0
       rimraf: 3.0.2
       run-singleton-cli: 0.0.5
+
+  nh-launcher-applet:
+    specifiers:
+      '@babel/preset-env': ^7.15.0
+      '@holochain-open-dev/profiles': ^0.11.0
+      '@holochain/client': 0.12.0
+      '@lit-labs/context': ^0.1.1
+      '@neighbourhoods/nh-launcher-applet': 0.0.10
+      '@neighbourhoods/provider-applet': workspace:*
+      '@neighbourhoods/provider-component': workspace:*
+      '@neighbourhoods/provider-store': workspace:*
+      '@neighbourhoods/sensemaker-lite-types': 0.4.0
+      '@open-wc/scoped-elements': ^2.1.1
+      '@rollup/plugin-babel': ^5.3.0
+      '@rollup/plugin-commonjs': 18.0.0
+      '@rollup/plugin-node-resolve': ^13.0.4
+      '@rollup/plugin-replace': ^3.0.0
+      '@rollup/plugin-typescript': ^10.0.1
+      '@scoped-elements/material-web': ^0.0.19
+      '@web/dev-server': ^0.1.21
+      '@web/dev-server-rollup': ^0.3.10
+      '@web/rollup-plugin-import-meta-assets': ^1.0.7
+      babel-plugin-template-html-minifier: ^4.1.0
+      bestzip: ^2.2.0
+      concurrently: ^5.3.0
+      deepmerge: ^4.2.2
+      lit: ^2.2.0
+      new-port-cli: ^1.0.0
+      rimraf: ^3.0.2
+      rollup: ^2.56.2
+      rollup-plugin-copy: ^3.4.0
+      rollup-plugin-terser: ^7.0.2
+      rollup-plugin-workbox: ^6.2.0
+      tslib: ^2.3.1
+      typescript: ^4.5.0
+    dependencies:
+      '@holochain-open-dev/profiles': 0.11.1
+      '@holochain/client': 0.12.0
+      '@lit-labs/context': 0.1.3
+      '@neighbourhoods/nh-launcher-applet': 0.0.10
+      '@neighbourhoods/provider-applet': link:../ui
+      '@neighbourhoods/provider-component': link:../ui/src/components/ProviderComponent
+      '@neighbourhoods/provider-store': link:../ui/src/store
+      '@neighbourhoods/sensemaker-lite-types': 0.4.0
+      '@open-wc/scoped-elements': 2.1.4
+      '@scoped-elements/material-web': 0.0.19
+      lit: 2.6.1
+    devDependencies:
+      '@babel/preset-env': 7.20.2
+      '@rollup/plugin-babel': 5.3.1_rollup@2.79.1
+      '@rollup/plugin-commonjs': 18.0.0_rollup@2.79.1
+      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
+      '@rollup/plugin-replace': 3.1.0_rollup@2.79.1
+      '@rollup/plugin-typescript': 10.0.1_09c4cab51ef954b1bc178cd63b85c611
+      '@web/dev-server': 0.1.21_rollup@2.79.1
+      '@web/dev-server-rollup': 0.3.21
+      '@web/rollup-plugin-import-meta-assets': 1.0.7
+      babel-plugin-template-html-minifier: 4.1.0
+      bestzip: 2.2.1
+      concurrently: 5.3.0
+      deepmerge: 4.3.0
+      new-port-cli: 1.0.0
+      rimraf: 3.0.2
+      rollup: 2.79.1
+      rollup-plugin-copy: 3.4.0
+      rollup-plugin-terser: 7.0.2_rollup@2.79.1
+      rollup-plugin-workbox: 6.2.0_rollup@2.79.1
+      tslib: 2.5.0
+      typescript: 4.9.5
 
   tests:
     specifiers:
@@ -43,7 +112,7 @@ importers:
       lodash-es: 4.17.21
       path: 0.12.7
       tape: 5.6.3
-      ts-node: 10.9.1_7iyetdgfmqiorh7qupktbe7tm4
+      ts-node: 10.9.1_fa30498cc56410e89ff0a3d53093f367
       typescript: 4.9.5
       uuidv4: 6.2.13
     devDependencies:
@@ -60,7 +129,7 @@ importers:
       '@lit-labs/context': ^0.1.2
       '@msgpack/msgpack': ^2.7.2
       '@neighbourhoods/component-create-or-join-nh': workspace:*
-      '@neighbourhoods/nh-we-applet': 0.0.5
+      '@neighbourhoods/nh-launcher-applet': 0.0.10
       '@neighbourhoods/provider-component': workspace:*
       '@neighbourhoods/provider-store': workspace:*
       '@neighbourhoods/sensemaker-lite-types': 0.4.0
@@ -104,7 +173,7 @@ importers:
       '@lit-labs/context': 0.1.3
       '@msgpack/msgpack': 2.8.0
       '@neighbourhoods/component-create-or-join-nh': link:src/components/CreateOrJoinNH
-      '@neighbourhoods/nh-we-applet': 0.0.5
+      '@neighbourhoods/nh-launcher-applet': 0.0.10
       '@neighbourhoods/provider-component': link:src/components/ProviderComponent
       '@neighbourhoods/provider-store': link:src/store
       '@neighbourhoods/sensemaker-lite-types': 0.4.0
@@ -117,14 +186,14 @@ importers:
     devDependencies:
       '@babel/preset-env': 7.20.2
       '@open-wc/building-rollup': 1.10.0_rollup@2.79.1
-      '@open-wc/eslint-config': 4.3.0_sz4i7qznf44sliit4yqchbvfk4
+      '@open-wc/eslint-config': 4.3.0
       '@rollup/plugin-babel': 5.3.1_rollup@2.79.1
       '@rollup/plugin-commonjs': 18.0.0_rollup@2.79.1
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
       '@rollup/plugin-replace': 3.1.0_rollup@2.79.1
-      '@rollup/plugin-typescript': 10.0.1_bhcmvni67fkldpaxrtldxbogce
-      '@typescript-eslint/eslint-plugin': 4.33.0_s2qqtxhzmb7vugvfoyripfgp7i
-      '@typescript-eslint/parser': 4.33.0_jofidmxrjzhj7l6vknpw5ecvfe
+      '@rollup/plugin-typescript': 10.0.1_09c4cab51ef954b1bc178cd63b85c611
+      '@typescript-eslint/eslint-plugin': 4.33.0_96a109dcf9607f5a1aa576228794cffa
+      '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.9.5
       '@web/dev-server': 0.1.21_rollup@2.79.1
       '@web/dev-server-rollup': 0.3.21
       '@web/rollup-plugin-html': 1.11.0
@@ -181,69 +250,6 @@ importers:
       '@holochain/client': 0.12.0
       '@lit-labs/context': 0.1.3
       svelte: 3.55.1
-
-  we-applet:
-    specifiers:
-      '@babel/preset-env': ^7.15.0
-      '@holochain-open-dev/profiles': ^0.11.0
-      '@holochain/client': 0.12.0
-      '@lit-labs/context': ^0.1.1
-      '@neighbourhoods/nh-we-applet': 0.0.9
-      '@neighbourhoods/provider-applet': workspace:*
-      '@neighbourhoods/sensemaker-lite-types': 0.4.0
-      '@open-wc/scoped-elements': ^2.1.1
-      '@rollup/plugin-babel': ^5.3.0
-      '@rollup/plugin-commonjs': 18.0.0
-      '@rollup/plugin-node-resolve': ^13.0.4
-      '@rollup/plugin-replace': ^3.0.0
-      '@scoped-elements/material-web': ^0.0.19
-      '@web/dev-server': ^0.1.21
-      '@web/dev-server-rollup': ^0.3.10
-      '@web/rollup-plugin-import-meta-assets': ^1.0.7
-      babel-plugin-template-html-minifier: ^4.1.0
-      bestzip: ^2.2.0
-      concurrently: ^5.3.0
-      deepmerge: ^4.2.2
-      lit: ^2.2.0
-      new-port-cli: ^1.0.0
-      rimraf: ^3.0.2
-      rollup: ^2.56.2
-      rollup-plugin-copy: ^3.4.0
-      rollup-plugin-terser: ^7.0.2
-      rollup-plugin-workbox: ^6.2.0
-      tslib: ^2.3.1
-      typescript: ^4.5.0
-    dependencies:
-      '@holochain-open-dev/profiles': 0.11.0
-      '@holochain/client': 0.12.0
-      '@lit-labs/context': 0.1.3
-      '@neighbourhoods/nh-we-applet': 0.0.9
-      '@neighbourhoods/provider-applet': link:../ui
-      '@neighbourhoods/sensemaker-lite-types': 0.4.0
-      '@open-wc/scoped-elements': 2.1.4
-      '@scoped-elements/material-web': 0.0.19
-      lit: 2.6.1
-    devDependencies:
-      '@babel/preset-env': 7.20.2
-      '@rollup/plugin-babel': 5.3.1_rollup@2.79.1
-      '@rollup/plugin-commonjs': 18.0.0_rollup@2.79.1
-      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
-      '@rollup/plugin-replace': 3.1.0_rollup@2.79.1
-      '@web/dev-server': 0.1.35
-      '@web/dev-server-rollup': 0.3.21
-      '@web/rollup-plugin-import-meta-assets': 1.0.7
-      babel-plugin-template-html-minifier: 4.1.0
-      bestzip: 2.2.1
-      concurrently: 5.3.0
-      deepmerge: 4.3.0
-      new-port-cli: 1.0.0
-      rimraf: 3.0.2
-      rollup: 2.79.1
-      rollup-plugin-copy: 3.4.0
-      rollup-plugin-terser: 7.0.2_rollup@2.79.1
-      rollup-plugin-workbox: 6.2.0_rollup@2.79.1
-      tslib: 2.5.0
-      typescript: 4.9.5
 
 packages:
 
@@ -2334,28 +2340,14 @@ packages:
     resolution: {integrity: sha512-Dn5pTV/m3XaK1Zvq3liw/vQUt7goM7Y84x2zUyH8cb9CNMs4kPCNHs3kalbJZ/ymzFvwcdiLwwNW8AKk+WWN5A==}
     dev: false
 
-  /@holochain-open-dev/elements/0.1.5:
-    resolution: {integrity: sha512-ksurju3mD3c+DqrnMs7aCP3gOKuFqpA8hjFY8pxMo5DcDnn8PM5mH0aNAI8qR9AKw5nxVJrSo5Uwm1pehakPQg==}
-    dependencies:
-      '@holo-host/identicon': 0.1.0
-      '@holochain/client': 0.11.16
-      '@msgpack/msgpack': 2.8.0
-      '@open-wc/scoped-elements': 2.1.0
-      '@scoped-elements/material-web': 0.0.19
-      '@scoped-elements/shoelace': 0.0.10
-      lit: 2.6.1
-      lodash-es: 4.17.21
-    transitivePeerDependencies:
-      - ws
-    dev: false
-
-  /@holochain-open-dev/elements/0.2.3:
-    resolution: {integrity: sha512-NzMrVJsQO2VTDHW0UKeG78XW5wMvxdRsHkCDmp8R7AoQFIZESqYTKxpwB383TQ54H8Da1Q8s2tLciYSa9eXIIA==}
+  /@holochain-open-dev/elements/0.2.6:
+    resolution: {integrity: sha512-W2k/kQZpnwgHiIxHzhhxH+ZhqeXje5VzieWlmk3EiImtRhZnZFqfiKOZLLkJYnLLDzaCkWHxI8IrrmORsccz3g==}
     dependencies:
       '@holo-host/identicon': 0.1.0
       '@holochain/client': 0.12.0
+      '@lit/localize': 0.11.4
       '@open-wc/scoped-elements': 2.1.0
-      '@scoped-elements/material-web': 0.0.19
+      '@scoped-elements/material-web': 0.1.1
       '@scoped-elements/shoelace': 0.0.10
       lit: 2.6.1
     transitivePeerDependencies:
@@ -2365,7 +2357,7 @@ packages:
   /@holochain-open-dev/profiles/0.11.0:
     resolution: {integrity: sha512-38nHkqAh162nTyl3UZL8Uu28nF23M+/YOtrEL01qwvtziEQ8+wH4PrTxFO1rL4HVQssZBiQaA9OOqf0jxS0U6w==}
     dependencies:
-      '@holochain-open-dev/elements': 0.2.3
+      '@holochain-open-dev/elements': 0.2.6
       '@holochain-open-dev/stores': 0.2.0
       '@holochain-open-dev/utils': 0.10.4
       '@holochain/client': 0.12.0
@@ -2380,22 +2372,20 @@ packages:
       - ws
     dev: false
 
-  /@holochain-open-dev/profiles/0.9.4:
-    resolution: {integrity: sha512-gNMzxOqiPCIzSsN5RWQbY6cVYD/yKqXqUktzywxi1Opk3hjRcJKXiCJRHk2mFH96z7CH0UXfK20eSgwKWCGi5g==}
+  /@holochain-open-dev/profiles/0.11.1:
+    resolution: {integrity: sha512-aFaKbiY/SQ+jA1r63uULwkpFrBi7T0Cr5SQK+KULjiTThfboJDjoc4WwAU7PdrS7RSxLPgurqOgrbO0K900t+A==}
     dependencies:
-      '@holochain-open-dev/elements': 0.1.5
-      '@holochain-open-dev/utils': 0.9.9
-      '@holochain/client': 0.11.16
-      '@lit-labs/context': 0.1.3
+      '@holochain-open-dev/elements': 0.2.6
+      '@holochain-open-dev/stores': 0.4.2
+      '@holochain-open-dev/utils': 0.11.5
+      '@holochain/client': 0.12.0
+      '@lit-labs/context': 0.2.0
       '@lit/localize': 0.11.4
-      '@msgpack/msgpack': 2.8.0
       '@open-wc/scoped-elements': 2.1.4
-      '@scoped-elements/material-web': 0.0.19
+      '@scoped-elements/material-web': 0.1.1
       '@scoped-elements/shoelace': 0.0.8
-      lit: 2.6.1
-      lit-svelte-stores: 0.2.1
+      emittery: 1.0.1
       lodash-es: 4.17.21
-      svelte: 3.55.1
     transitivePeerDependencies:
       - ws
     dev: false
@@ -2404,6 +2394,18 @@ packages:
     resolution: {integrity: sha512-SHxdq7B8BYpZQbGFGkWTn9dc6heI3r4/dC4myRe/0+dRd8xXSBrGIfu5nZGvwM4pz9tbmFXheVwrrqLp1a7SXw==}
     dependencies:
       '@holochain-open-dev/utils': 0.10.4
+      '@holochain/client': 0.12.0
+      lit: 2.6.1
+      lit-svelte-stores: 0.2.1
+      svelte: 3.55.1
+    transitivePeerDependencies:
+      - ws
+    dev: false
+
+  /@holochain-open-dev/stores/0.4.2:
+    resolution: {integrity: sha512-Lts0Pg9bgksXC9jTG8oe9jdxJCjBA5OLLm2zYgzYYbAJOqwst/OwSATExkZGiCbGFKRj4Y1MMIfbWECxSBRf4A==}
+    dependencies:
+      '@holochain-open-dev/utils': 0.11.5
       '@holochain/client': 0.12.0
       lit: 2.6.1
       lit-svelte-stores: 0.2.1
@@ -2425,14 +2427,16 @@ packages:
       - ws
     dev: false
 
-  /@holochain-open-dev/utils/0.9.9:
-    resolution: {integrity: sha512-RLidwEo9ANpwFR25o1sCPw8Cy7gjGiqeQNFJer4A7gGbUfCk6dm5iQEjoqt7zDXuXwQo+B3iqE/5lg73NyK4ZQ==}
+  /@holochain-open-dev/utils/0.11.5:
+    resolution: {integrity: sha512-1oxtCA84fXtnRk4fD5NjQCzjArnoaeVRWu1H/iAaiL8l6Q8CNNDfgRL8YMDcpb1kEO+o60UKU0251qg37A6I5w==}
     dependencies:
-      '@holochain/client': 0.11.16
+      '@holochain/client': 0.12.0
       '@msgpack/msgpack': 2.8.0
+      blakejs: 1.2.1
       emittery: 1.0.1
       lit: 2.6.1
       lodash-es: 4.17.21
+      sort-keys: 5.0.0
     transitivePeerDependencies:
       - ws
     dev: false
@@ -2443,22 +2447,6 @@ packages:
     dependencies:
       build: 0.1.4
     dev: true
-
-  /@holochain/client/0.11.16:
-    resolution: {integrity: sha512-uX1/mRnNZHc0y88bkGJrfp6/mfh1UGFS+g+wvn+E69spzPQMxAkjo7FmZ6nmZfxPoYCoxKjVJyKmvswPUP1Xfw==}
-    engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
-    dependencies:
-      '@holochain/serialization': 0.1.0-beta-rc.3
-      '@msgpack/msgpack': 2.8.0
-      '@tauri-apps/api': 1.2.0
-      emittery: 1.0.1
-      isomorphic-ws: 5.0.0
-      js-base64: 3.7.5
-      lodash-es: 4.17.21
-      tweetnacl: 1.0.3
-    transitivePeerDependencies:
-      - ws
-    dev: false
 
   /@holochain/client/0.12.0:
     resolution: {integrity: sha512-pvrB6Gdc6488iR3VZXoq5QKzoAPTGi0y69Ktrtgr/IZEvtSSHBqHeMhyEjXCa7iS8b1gXsL/HAvq47rs8mu50A==}
@@ -2625,8 +2613,20 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/animation/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-GBuR4VmcTQW1D0lPXEosf5Giho72LLbyGIydWGtaEUtLJoive/D9kFkwTN4Fsyt9Kkl7hbhs35vrNe6QkAH4/Q==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
   /@material/base/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-vy5SQt+jcwwdRFfBvtpVdpULUBujecVUKOXcopaQoi2XIzI5EBHuR4gPN0cd1yfmVEucD6p2fvVv2FJ3Ngr61w==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/base/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-UJKbXwZtkrA3sfQDmj8Zbw1Q3Tqtl6KdfVFws95Yf7TCUgTFzbZI/FSx1w7dVugQPOEnIBuZnzqZam/MtHkx4w==}
     dependencies:
       tslib: 2.5.0
     dev: false
@@ -2648,6 +2648,24 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/button/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-IPBAByKpQjrWNVmAWx5VCTCLnOw4ymbLsbHmBkLiDgcLPs1EtwYnKKIwQ+/t3bV02OShUdMiyboL8V/C0gMS1A==}
+    dependencies:
+      '@material/density': 14.0.0-canary.53b3cad2f.0
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/elevation': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/focus-ring': 14.0.0-canary.53b3cad2f.0
+      '@material/ripple': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/shape': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      '@material/tokens': 14.0.0-canary.53b3cad2f.0
+      '@material/touch-target': 14.0.0-canary.53b3cad2f.0
+      '@material/typography': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
   /@material/circular-progress/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-Gi6Ika8MEZQOT3Qei2NfTj+sRWxCDFjchPM7szNjIKgL2DyH03bHmodQFVcyBFiPWEcWMc/mqVYgGf/XJXs85w==}
     dependencies:
@@ -2660,8 +2678,26 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/circular-progress/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-4A+HMgp66b45Fvbcbh9qb1j0vRFjKESbE2fHFkSMMNDPqFiKcvq4tJFBxKG2szYzpAnXdWLYaB+DeQ2+wSu9hg==}
+    dependencies:
+      '@material/animation': 14.0.0-canary.53b3cad2f.0
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/progress-indicator': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
   /@material/density/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-zOR5wISqPVr8KS/ERNC1jdRV9O832lzclyS9Ea20rDrWfuOiYsQ9bbIk12xWlxpgsn7r9fxQJyd1O2SURoHdRA==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/density/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-Eh/vZ3vVyqtpylg5Ci33qlgtToS4H1/ppd450Ib3tcdISIoodgijYY0w4XsRvrnZgbI/h/1STFdLxdzS0UNuFw==}
     dependencies:
       tslib: 2.5.0
     dev: false
@@ -2693,6 +2729,13 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/dom/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-aR+rfncF6oi2ivdOlKSJI4UXwNzWV5rXM88MLDoSJF1D7lXxhAKhge+tMUBodWGV/q0+FnXLuVAa0WYTrKjo+A==}
+    dependencies:
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
   /@material/drawer/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-L4K8IXN5LMvaqVpOueopaMQPQbAWrRQ21iJi7Yv4BL15xWs5GbNohQJAclx4R6lHpEhnhYHlQ2dsIhe01IRrDw==}
     dependencies:
@@ -2721,8 +2764,25 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/elevation/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-3h+EkR588RMZ5TSNQ4UeXD1FOBnL3ABQix0DQIGwtNJCqSMoPndT/oJEFvwQbTkZNDbFIKN9p1Q7/KuFPVY8Pw==}
+    dependencies:
+      '@material/animation': 14.0.0-canary.53b3cad2f.0
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
   /@material/feature-targeting/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-CrVoGNu0ym52OPEKy3kgeNL2oSWOCBYbYxSH3GhERxCq5FwGBN+XmK/ZDLFVQlHYy3v8x4TqVEwXviCeumNTxQ==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/feature-targeting/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-fn7Af3PRyARtNeYqtjxXmE3Y/dCpnpQVWWys57MqiGR/nvc6qpgOfJ6rOdcu/MrOysOE/oebTUDmDnTmwpe9Hw==}
     dependencies:
       tslib: 2.5.0
     dev: false
@@ -2738,6 +2798,14 @@ packages:
       '@material/theme': 14.0.0-canary.261f2db59.0
       '@material/typography': 14.0.0-canary.261f2db59.0
       tslib: 2.5.0
+    dev: false
+
+  /@material/focus-ring/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-exPX5VrjQimipBwgcFDGRiEE783sOBgpkFui59A6i6iGvS2UrLHlYY2E65fyyyQnD1f/rv4Po1OOnCesE1kulg==}
+    dependencies:
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
     dev: false
 
   /@material/form-field/14.0.0-canary.261f2db59.0:
@@ -2763,6 +2831,22 @@ packages:
       '@material/rtl': 14.0.0-canary.261f2db59.0
       '@material/theme': 14.0.0-canary.261f2db59.0
       '@material/touch-target': 14.0.0-canary.261f2db59.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/icon-button/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-BFdj3CP0JXHC/F2bDmpmzWhum4fkzIDgCCavvnpE/KcCbr0AaoSULRde+LtqvbdLIYW20cXhvjinIOlRhSOshA==}
+    dependencies:
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/density': 14.0.0-canary.53b3cad2f.0
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/elevation': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/focus-ring': 14.0.0-canary.53b3cad2f.0
+      '@material/ripple': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      '@material/touch-target': 14.0.0-canary.53b3cad2f.0
       tslib: 2.5.0
     dev: false
 
@@ -2841,6 +2925,15 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/mwc-base/0.27.0:
+    resolution: {integrity: sha512-oCWWtjbyQ52AaUbzINLGBKScIPyqhps2Y7c8t6Gu6fcFeDxhKXMV1Cqvtj/OMhtAt53XjHfD2XruWwYv3cYYUA==}
+    dependencies:
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      lit: 2.6.1
+      tslib: 2.5.0
+    dev: false
+
   /@material/mwc-button/0.25.3:
     resolution: {integrity: sha512-usHEKchj9hqetY7n0yebTz1Pk9Z+9W/sNZheFoSaiWQCv9XhtCdKkHH0MXTv8SpwxWuEKUf/XjtyvikGIcIn7w==}
     dependencies:
@@ -2876,6 +2969,16 @@ packages:
       '@material/circular-progress': 14.0.0-canary.261f2db59.0
       '@material/mwc-base': 0.25.3
       '@material/theme': 14.0.0-canary.261f2db59.0
+      lit: 2.6.1
+      tslib: 2.5.0
+    dev: false
+
+  /@material/mwc-circular-progress/0.27.0:
+    resolution: {integrity: sha512-7DkqMb5pUrHfLus5EZ7IT2HUMoE+uPpjGzu3MnDpIzDlfYo6I8p+ifWtEytI0NtXdY5UmITNuCv0RC77mhJrgQ==}
+    dependencies:
+      '@material/circular-progress': 14.0.0-canary.53b3cad2f.0
+      '@material/mwc-base': 0.27.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
       lit: 2.6.1
       tslib: 2.5.0
     dev: false
@@ -3067,6 +3170,15 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/mwc-snackbar/0.27.0:
+    resolution: {integrity: sha512-D9xhae4MiUwhHJxXaNzucmOutXVS/02CVnuCpzV2uDCLnY4oTaiZNDa+YBxheZnNKTTSm5yrshOnsRIQO6hgPw==}
+    dependencies:
+      '@material/mwc-base': 0.27.0
+      '@material/snackbar': 14.0.0-canary.53b3cad2f.0
+      lit: 2.6.1
+      tslib: 2.5.0
+    dev: false
+
   /@material/mwc-switch/0.25.3:
     resolution: {integrity: sha512-cjppRf17q70SdtTP0twMAzODJY7ztJFnfDDZKM5N72F4cp2q0VvhIU42hfBCGLIEbXPQBCLG0dxqt2Mo04qCcA==}
     dependencies:
@@ -3160,6 +3272,15 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/mwc-top-app-bar/0.27.0:
+    resolution: {integrity: sha512-vHn10exeDhUVFpo4TgBsS8pta4AxZtjuuxrYFHMYxceGifEATvGbYoPyw1x7cCMcXMMIITElgfCURAbCmn3BgA==}
+    dependencies:
+      '@material/mwc-base': 0.27.0
+      '@material/top-app-bar': 14.0.0-canary.53b3cad2f.0
+      lit: 2.6.1
+      tslib: 2.5.0
+    dev: false
+
   /@material/notched-outline/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-gtn+IKAiX2rbfbX3a9aDlfUoKCEYrlAPOZifKXUaZ4UJYMNLzZuAqy7l5Ds30emtqUE22mySTEWqhzK6dePKsA==}
     dependencies:
@@ -3174,6 +3295,12 @@ packages:
 
   /@material/progress-indicator/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-qm+zUMvFYhHuVB2OdgWTO/Dv1hMFEdIT3loX5OJMpvQ66l6rez/3F7blwHkm6W4mfuxRS3zdDdYbP5QdFcuHuA==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/progress-indicator/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-vW0oZK70QOpAarip95ueCQ/I3kBClcWjxsc0F0QjkqT76DOVXpjnZ4XoRRyq9eMpwLqlKLTecrsSNpmqwwF1Dg==}
     dependencies:
       tslib: 2.5.0
     dev: false
@@ -3204,10 +3331,29 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/ripple/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-6g2G62vd8DsMuIUSXlRrzb98qkZ4o8ZREknNwNP2zaLQEOkJ//4j9HaqDt98/3LIjUTY9UIVFTQENiMmlwKHYQ==}
+    dependencies:
+      '@material/animation': 14.0.0-canary.53b3cad2f.0
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
   /@material/rtl/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-bVnXBbUsHs57+EXdeFbcwaKy3lT/itI/qTLmJ88ar0qaGEujO1GmESHm3ioqkeo4kQpTfDhBwQGeEi1aDaTdFg==}
     dependencies:
       '@material/theme': 14.0.0-canary.261f2db59.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/rtl/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-f08LT0HSa0WYU+4Jz/tbm1TQ9Fcf2k+H6dPPYv0J1sZmX6hMgCEmNiUdUFLQFvszoXx2XrRi1/hIFjbz2e69Yg==}
+    dependencies:
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
       tslib: 2.5.0
     dev: false
 
@@ -3242,6 +3388,15 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/shape/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-RyjInLCNe+nI/ulKea0ZLHphXQDiDqYazS25SRn18g8Hoa5qGNaY5oOBncDXUYn3jm5oI5kFc9oif//kulkbjg==}
+    dependencies:
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
   /@material/slider/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-JoTlKGDf5+Ao0JNNlpiNM1h3TezhOELpM8dmCs1IwCzw7pWepihSa4oXemdDadHKAYM0HOIo2OQVcark96/WSQ==}
     dependencies:
@@ -3272,6 +3427,24 @@ packages:
       '@material/shape': 14.0.0-canary.261f2db59.0
       '@material/theme': 14.0.0-canary.261f2db59.0
       '@material/typography': 14.0.0-canary.261f2db59.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/snackbar/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-E/i+o7Q8Jp4UW7UBTslqlFeSxgyU7XE86CoYuq2g+ySSWTt8b16ug8EJTQvuk4DRdDO3tjQN1sN0R77Av6txSw==}
+    dependencies:
+      '@material/animation': 14.0.0-canary.53b3cad2f.0
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/button': 14.0.0-canary.53b3cad2f.0
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/elevation': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/icon-button': 14.0.0-canary.53b3cad2f.0
+      '@material/ripple': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/shape': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      '@material/typography': 14.0.0-canary.53b3cad2f.0
       tslib: 2.5.0
     dev: false
 
@@ -3369,10 +3542,23 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/theme/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-S06XAevDCDWMe+GgsEpITMS07imUidzadNaTbJsqssFajBLr53QWVZsG84BpjXKXoYvyEJvb0hX5U0lq6ip9UQ==}
+    dependencies:
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
   /@material/tokens/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-mgar9gsLv00HTvXIDvNR1vEEXpfKgeWhVTO8a7aWofSNyENNOVc5ImJwBgCAMb5SgLHBi6w8/c1tPzjOewBfCA==}
     dependencies:
       '@material/elevation': 14.0.0-canary.261f2db59.0
+    dev: false
+
+  /@material/tokens/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-myHFB7vac8zErA3qgkqmV+kpE+i9JEwc/6Yf0MOumDSpylJGw28QikpNC6eAVBK2EmPQTaFn20mqUxyud8dGqw==}
+    dependencies:
+      '@material/elevation': 14.0.0-canary.53b3cad2f.0
     dev: false
 
   /@material/top-app-bar/14.0.0-canary.261f2db59.0:
@@ -3389,12 +3575,35 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/top-app-bar/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-9vPLLxUbNrWNCPGHoIeIUtyXWQUNh+yQwnkTYVkVAVEb1CsWb2D+/NefytfvyFtXWBFQLybAeG5RH0ZqdcgQBQ==}
+    dependencies:
+      '@material/animation': 14.0.0-canary.53b3cad2f.0
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/elevation': 14.0.0-canary.53b3cad2f.0
+      '@material/ripple': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/shape': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      '@material/typography': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
   /@material/touch-target/14.0.0-canary.261f2db59.0:
     resolution: {integrity: sha512-xA6TTHN7aOTXg/+c6mQJlogzTD+Sp8WPC5TK8RBXbQxEykGXGW15p+H9pG+rX/gzD5iehnHRBrDUFmAGoskhcQ==}
     dependencies:
       '@material/base': 14.0.0-canary.261f2db59.0
       '@material/feature-targeting': 14.0.0-canary.261f2db59.0
       '@material/rtl': 14.0.0-canary.261f2db59.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/touch-target/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-d83e5vbqoLyL542yOTTp4TLVltddWiqbI/j1w/D9ipE30YKfe2EDN+CNJc32Zufh5IUfK41DsZdrN8fI9cL99A==}
+    dependencies:
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
       tslib: 2.5.0
     dev: false
 
@@ -3406,34 +3615,31 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /@material/typography/14.0.0-canary.53b3cad2f.0:
+    resolution: {integrity: sha512-9J0k2fq7uyHsRzRqJDJLGmg3YzRpfRPtFDVeUH/xBcYoqpZE7wYw5Mb7s/l8eP626EtR7HhXhSPjvRTLA6NIJg==}
+    dependencies:
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/web/1.0.0-pre.2:
+    resolution: {integrity: sha512-Fq0zBNvLw6uZ1v9/ntZtEviuVA3+4ynt6No4s+VlpHlfvGGoS2BnGxWqx4pIPNuIxAUt0LIK19caFtuxdu4S2A==}
+    dependencies:
+      lit: 2.6.1
+      tslib: 2.5.0
+    dev: false
+
   /@msgpack/msgpack/2.8.0:
     resolution: {integrity: sha512-h9u4u/jiIRKbq25PM+zymTyW6bhTzELvOoUd+AvYriWOAKpLGnIamaET3pnHYoI5iYphAHBI4ayx0MehR+VVPQ==}
     engines: {node: '>= 10'}
 
-  /@neighbourhoods/nh-we-applet/0.0.5:
-    resolution: {integrity: sha512-ifIspssZiosUuTUPxslncQHRPedkcpp77H5DtIFgN9+joGzQXDEf/oLeMNsLGzaBPNyP2HBkQO6PDz/VPJzKYA==}
-    dependencies:
-      '@holochain-open-dev/profiles': 0.9.4
-      '@holochain/client': 0.11.16
-      '@neighbourhoods/sensemaker-lite-types': 0.1.0
-    transitivePeerDependencies:
-      - ws
-    dev: false
-
-  /@neighbourhoods/nh-we-applet/0.0.9:
-    resolution: {integrity: sha512-yqj68JxMUHHeDuu8jp5rHNOdwqK94r3hIVCnT/HrFA3hWupoEHWIapWhHXwiNATp1khN4MDsGdR/rd3nCwsx1A==}
+  /@neighbourhoods/nh-launcher-applet/0.0.10:
+    resolution: {integrity: sha512-M+niNDvXMX3PYsopBoYk9ZlRKFTZuYae/HCW5mTRqclUmVMO4A5V8AZJjNwpmsvZORYrI0PuIhWM6A7yBg0kvQ==}
     dependencies:
       '@holochain-open-dev/profiles': 0.11.0
       '@holochain/client': 0.12.0
       '@neighbourhoods/sensemaker-lite-types': 0.4.0
-    transitivePeerDependencies:
-      - ws
-    dev: false
-
-  /@neighbourhoods/sensemaker-lite-types/0.1.0:
-    resolution: {integrity: sha512-GM2NbMcaiRD3UkLUXYMfwccE0pBTiaoIB1j8UV573lKQ4ch1VDURpybJ0VtwGmmrpmnOifBY0V1FFhTaZ1S0Lw==}
-    dependencies:
-      '@holochain/client': 0.11.16
     transitivePeerDependencies:
       - ws
     dev: false
@@ -3483,7 +3689,7 @@ packages:
       '@open-wc/building-utils': 2.21.0
       '@open-wc/rollup-plugin-html': 1.2.5
       '@open-wc/rollup-plugin-polyfills-loader': 1.1.8
-      '@rollup/plugin-babel': 5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm
+      '@rollup/plugin-babel': 5.3.1_d8e457a9eec5694be0a6185ede2794cb
       '@rollup/plugin-node-resolve': 7.1.3_rollup@2.79.1
       babel-plugin-bundled-import-meta: 0.3.2_@babel+core@7.20.12
       babel-plugin-template-html-minifier: 4.1.0
@@ -3538,23 +3744,20 @@ packages:
     resolution: {integrity: sha512-ukowSvzpZQDUH0Y3znJTsY88HkiGk3Khc0WGpIPhap1xlerieYi27QBg6wx/nTurpWfU6XXXsx9ocxDYCdtw0Q==}
     dev: false
 
-  /@open-wc/eslint-config/4.3.0_sz4i7qznf44sliit4yqchbvfk4:
+  /@open-wc/eslint-config/4.3.0:
     resolution: {integrity: sha512-kCxFWQ1AR4meTmWJGnK36LJYqDJeFGjlj6n4vLjAW3/c1VUyYQKL90vrNKy/OHS9kTjc9dcH5D64myAbNx6r1w==}
     peerDependencies:
       '@babel/eslint-plugin': ^7.6.0
     dependencies:
       eslint: 7.32.0
-      eslint-config-airbnb-base: 14.2.1_4heylg5ce4zxl5r7mnxe6vqlki
+      eslint-config-airbnb-base: 14.2.1_e1c9859ba2273375f63f636e4f560b52
       eslint-plugin-html: 6.2.0
-      eslint-plugin-import: 2.27.5_ffi3uiz42rv3jyhs6cr7p7qqry
+      eslint-plugin-import: 2.27.5_eslint@7.32.0
       eslint-plugin-lit: 1.8.2_eslint@7.32.0
-      eslint-plugin-lit-a11y: 1.1.0_eslint@7.32.0
+      eslint-plugin-lit-a11y: 1.1.0
       eslint-plugin-no-only-tests: 2.6.0
       eslint-plugin-wc: 1.4.0_eslint@7.32.0
     transitivePeerDependencies:
-      - '@typescript-eslint/parser'
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
       - supports-color
     dev: true
 
@@ -3598,7 +3801,7 @@ packages:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
     dev: false
 
-  /@rollup/plugin-babel/5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm:
+  /@rollup/plugin-babel/5.3.1_d8e457a9eec5694be0a6185ede2794cb:
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
@@ -3751,7 +3954,7 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rollup/plugin-typescript/10.0.1_bhcmvni67fkldpaxrtldxbogce:
+  /@rollup/plugin-typescript/10.0.1_09c4cab51ef954b1bc178cd63b85c611:
     resolution: {integrity: sha512-wBykxRLlX7EzL8BmUqMqk5zpx2onnmRMSw/l9M1sVfkJvdwfxogZQVNUM9gVMJbjRLDR5H6U0OMOrlDGmIV45A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -3891,6 +4094,18 @@ packages:
       '@material/mwc-textfield': 0.25.3
       '@material/mwc-top-app-bar': 0.25.3
       '@material/mwc-top-app-bar-fixed': 0.25.3
+      '@open-wc/scoped-elements': 2.1.4
+      '@ui5/webcomponents': 1.10.4
+      lit: 2.6.1
+    dev: false
+
+  /@scoped-elements/material-web/0.1.1:
+    resolution: {integrity: sha512-wwC+kkGloi3uKTT3Bu2o2iFgg/zzteSNGlpPyL/FUhhyhI0B2Yn/Gfjc7p2F6+o0Hu+9w/VldCo/DigERRYvHw==}
+    dependencies:
+      '@material/mwc-circular-progress': 0.27.0
+      '@material/mwc-snackbar': 0.27.0
+      '@material/mwc-top-app-bar': 0.27.0
+      '@material/web': 1.0.0-pre.2
       '@open-wc/scoped-elements': 2.1.4
       '@ui5/webcomponents': 1.10.4
       lit: 2.6.1
@@ -4198,6 +4413,7 @@ packages:
 
   /@types/node/14.18.36:
     resolution: {integrity: sha512-FXKWbsJ6a1hIrRxv+FoukuHnGTgEzKYGi7kilfMae96AL9UNkPFNWJEEYWzdRI9ooIkbr4AKldyuSTLql06vLQ==}
+    dev: true
 
   /@types/node/18.14.0:
     resolution: {integrity: sha512-5EWrvLmglK+imbCJY0+INViFWUHg1AHel1sq4ZVSfdcNqGy9Edv3UB9IIzzg+xPaUcAgZYcfVs2fBcwDeZzU0A==}
@@ -4286,7 +4502,7 @@ packages:
       '@types/node': 18.14.0
     dev: true
 
-  /@typescript-eslint/eslint-plugin/4.33.0_s2qqtxhzmb7vugvfoyripfgp7i:
+  /@typescript-eslint/eslint-plugin/4.33.0_96a109dcf9607f5a1aa576228794cffa:
     resolution: {integrity: sha512-aINiAxGVdOl1eJyVjaWn/YcVAq4Gi/Yo35qHGCnqbWVz61g39D0h23veY/MA0rFFGfxK7TySg2uwDeNv+JgVpg==}
     engines: {node: ^10.12.0 || >=12.0.0}
     peerDependencies:
@@ -4297,8 +4513,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/experimental-utils': 4.33.0_jofidmxrjzhj7l6vknpw5ecvfe
-      '@typescript-eslint/parser': 4.33.0_jofidmxrjzhj7l6vknpw5ecvfe
+      '@typescript-eslint/experimental-utils': 4.33.0_eslint@7.32.0+typescript@4.9.5
+      '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.9.5
       '@typescript-eslint/scope-manager': 4.33.0
       debug: 4.3.4
       eslint: 7.32.0
@@ -4312,7 +4528,7 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/experimental-utils/4.33.0_jofidmxrjzhj7l6vknpw5ecvfe:
+  /@typescript-eslint/experimental-utils/4.33.0_eslint@7.32.0+typescript@4.9.5:
     resolution: {integrity: sha512-zeQjOoES5JFjTnAhI5QY7ZviczMzDptls15GFsI6jyUOq0kOf9+WonkhtlIhh0RgHRnqj5gdNxW5j1EvAyYg6Q==}
     engines: {node: ^10.12.0 || >=12.0.0}
     peerDependencies:
@@ -4330,7 +4546,7 @@ packages:
       - typescript
     dev: true
 
-  /@typescript-eslint/parser/4.33.0_jofidmxrjzhj7l6vknpw5ecvfe:
+  /@typescript-eslint/parser/4.33.0_eslint@7.32.0+typescript@4.9.5:
     resolution: {integrity: sha512-ZohdsbXadjGBSK0/r+d87X0SBmKzOq4/S5nzK6SBgJspFo9/CUDJ7hjayuze+JK7CZQLDMroqytp7pOcFKTxZA==}
     engines: {node: ^10.12.0 || >=12.0.0}
     peerDependencies:
@@ -4501,31 +4717,6 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - rollup
-      - supports-color
-      - utf-8-validate
-    dev: true
-
-  /@web/dev-server/0.1.35:
-    resolution: {integrity: sha512-E7TSTSFdGPzhkiE3kIVt8i49gsiAYpJIZHzs1vJmVfdt8U4rsmhE+5roezxZo0hkEw4mNsqj9zCc4Dzqy/IFHg==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-    dependencies:
-      '@babel/code-frame': 7.18.6
-      '@types/command-line-args': 5.2.0
-      '@web/config-loader': 0.1.3
-      '@web/dev-server-core': 0.3.19
-      '@web/dev-server-rollup': 0.3.21
-      camelcase: 6.3.0
-      command-line-args: 5.2.1
-      command-line-usage: 6.1.3
-      debounce: 1.2.1
-      deepmerge: 4.3.0
-      ip: 1.1.8
-      nanocolors: 0.2.13
-      open: 8.4.1
-      portfinder: 1.0.32
-    transitivePeerDependencies:
-      - bufferutil
       - supports-color
       - utf-8-validate
     dev: true
@@ -5448,11 +5639,6 @@ packages:
 
   /debug/3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
     dependencies:
       ms: 2.1.3
     dev: true
@@ -5816,7 +6002,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-airbnb-base/14.2.1_4heylg5ce4zxl5r7mnxe6vqlki:
+  /eslint-config-airbnb-base/14.2.1_e1c9859ba2273375f63f636e4f560b52:
     resolution: {integrity: sha512-GOrQyDtVEc1Xy20U7vsB2yAoB4nBlfH5HZJeatRXHleO+OS5Ot+MWij4Dpltw4/DyIkqUfqz1epfhVR5XWWQPA==}
     engines: {node: '>= 6'}
     peerDependencies:
@@ -5825,7 +6011,7 @@ packages:
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 7.32.0
-      eslint-plugin-import: 2.27.5_ffi3uiz42rv3jyhs6cr7p7qqry
+      eslint-plugin-import: 2.27.5_eslint@7.32.0
       object.assign: 4.1.4
       object.entries: 1.1.6
     dev: true
@@ -5845,37 +6031,19 @@ packages:
       debug: 3.2.7
       is-core-module: 2.11.0
       resolve: 1.22.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
-  /eslint-module-utils/2.7.4_n7wmpe4hfzj47xhbzj4etqyjdi:
+  /eslint-module-utils/2.7.4_eslint@7.32.0:
     resolution: {integrity: sha512-j4GT+rqzCoRKHwURX7pddtIPGySnX9Si/cgMI5ztrcqOPtk5dDEeZ34CQVPphnqkJytlc97Vuk05Um2mJ3gEQA==}
     engines: {node: '>=4'}
     peerDependencies:
-      '@typescript-eslint/parser': '*'
       eslint: '*'
-      eslint-import-resolver-node: '*'
-      eslint-import-resolver-typescript: '*'
-      eslint-import-resolver-webpack: '*'
     peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
       eslint:
         optional: true
-      eslint-import-resolver-node:
-        optional: true
-      eslint-import-resolver-typescript:
-        optional: true
-      eslint-import-resolver-webpack:
-        optional: true
     dependencies:
-      '@typescript-eslint/parser': 4.33.0_jofidmxrjzhj7l6vknpw5ecvfe
       debug: 3.2.7
       eslint: 7.32.0
-      eslint-import-resolver-node: 0.3.7
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /eslint-plugin-html/6.2.0:
@@ -5884,17 +6052,12 @@ packages:
       htmlparser2: 7.2.0
     dev: true
 
-  /eslint-plugin-import/2.27.5_ffi3uiz42rv3jyhs6cr7p7qqry:
+  /eslint-plugin-import/2.27.5_eslint@7.32.0:
     resolution: {integrity: sha512-LmEt3GVofgiGuiE+ORpnvP+kAm3h6MLZJ4Q5HCyHADofsb4VzXFsRiWj3c0OFiV+3DWFh0qg3v9gcPlfc3zRow==}
     engines: {node: '>=4'}
     peerDependencies:
-      '@typescript-eslint/parser': '*'
       eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
     dependencies:
-      '@typescript-eslint/parser': 4.33.0_jofidmxrjzhj7l6vknpw5ecvfe
       array-includes: 3.1.6
       array.prototype.flat: 1.3.1
       array.prototype.flatmap: 1.3.1
@@ -5902,7 +6065,7 @@ packages:
       doctrine: 2.1.0
       eslint: 7.32.0
       eslint-import-resolver-node: 0.3.7
-      eslint-module-utils: 2.7.4_n7wmpe4hfzj47xhbzj4etqyjdi
+      eslint-module-utils: 2.7.4_eslint@7.32.0
       has: 1.0.3
       is-core-module: 2.11.0
       is-glob: 4.0.3
@@ -5911,16 +6074,10 @@ packages:
       resolve: 1.22.1
       semver: 6.3.0
       tsconfig-paths: 3.14.1
-    transitivePeerDependencies:
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - supports-color
     dev: true
 
-  /eslint-plugin-lit-a11y/1.1.0_eslint@7.32.0:
+  /eslint-plugin-lit-a11y/1.1.0:
     resolution: {integrity: sha512-reJqT0UG/Y8OC2z7pfgm0ODK1D6o5TgQpGdlgN1ja0HjdREXLqFVoYiEv013oNx3kBhTUaLlic64rRNw+386xw==}
-    peerDependencies:
-      eslint: '>= 5'
     dependencies:
       aria-query: 4.2.2
       axe-core: 4.6.3
@@ -5933,6 +6090,8 @@ packages:
       parse5: 5.1.1
       parse5-htmlparser2-tree-adapter: 6.0.1
       requireindex: 1.2.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /eslint-plugin-lit/1.8.2_eslint@7.32.0:
@@ -6759,6 +6918,11 @@ packages:
     resolution: {integrity: sha512-l4RyHgRqGN4Y3+9JHVrNqO+tN0rV5My76uW5/nuO4K1b6vw5G8d/cmFjP9tRfEsdhZNt0IFdZuK/c2Vr4Nb+Qg==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /is-plain-obj/4.1.0:
+    resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
+    engines: {node: '>=12'}
+    dev: false
 
   /is-plain-object/3.0.1:
     resolution: {integrity: sha512-Xnpx182SBMrr/aBik8y+GuR4U1L9FqMSojwDQwPMmxyC6bvEqly9UBCxhauBF5vNh2gwWJNX6oDV7O+OM4z34g==}
@@ -7786,8 +7950,6 @@ packages:
       async: 2.6.4
       debug: 3.2.7
       mkdirp: 0.5.6
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /prelude-ls/1.2.1:
@@ -8053,7 +8215,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-babel/4.4.0_svwyf5ijpe3bzfxnnbzz76w5xe:
+  /rollup-plugin-babel/4.4.0_956d82f50979361c96ed68739ffaddb9:
     resolution: {integrity: sha512-Lek/TYp1+7g7I+uMfJnnSJ7YWoD58ajo6Oarhlex7lvUce+RCKRuGRSgztDO3/MF/PuGKmUL5iTHKf208UNszw==}
     deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-babel.
     peerDependencies:
@@ -8321,6 +8483,13 @@ packages:
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
     dev: true
+
+  /sort-keys/5.0.0:
+    resolution: {integrity: sha512-Pdz01AvCAottHTPQGzndktFNdbRA75BgOfeT1hH+AMnJFv8lynkPi42rfeEhpx1saTEI3YNMWxfqu0sFD1G8pw==}
+    engines: {node: '>=12'}
+    dependencies:
+      is-plain-obj: 4.1.0
+    dev: false
 
   /source-map-support/0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
@@ -8741,7 +8910,7 @@ packages:
     resolution: {integrity: sha512-XrHUvV5HpdLmIj4uVMxHggLbFSZYIn7HEWsqePZcI50pco+MPqJ50wMGY794X7AOOhxOBAjbkqfAbEe/QMp2Lw==}
     dev: true
 
-  /ts-node/10.9.1_7iyetdgfmqiorh7qupktbe7tm4:
+  /ts-node/10.9.1_fa30498cc56410e89ff0a3d53093f367:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -9163,7 +9332,7 @@ packages:
       lodash.template: 4.5.0
       pretty-bytes: 5.6.0
       rollup: 1.32.1
-      rollup-plugin-babel: 4.4.0_svwyf5ijpe3bzfxnnbzz76w5xe
+      rollup-plugin-babel: 4.4.0_956d82f50979361c96ed68739ffaddb9
       rollup-plugin-terser: 5.3.1_rollup@1.32.1
       source-map: 0.7.4
       source-map-url: 0.4.1
@@ -9197,7 +9366,7 @@ packages:
       '@babel/core': 7.20.12
       '@babel/preset-env': 7.20.2_@babel+core@7.20.12
       '@babel/runtime': 7.20.13
-      '@rollup/plugin-babel': 5.3.1_3dsfpkpoyvuuxyfgdbpn4j4uzm
+      '@rollup/plugin-babel': 5.3.1_d8e457a9eec5694be0a6185ede2794cb
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.79.1
       '@rollup/plugin-replace': 2.4.2_rollup@2.79.1
       '@surma/rollup-plugin-off-main-thread': 2.2.3
