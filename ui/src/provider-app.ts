@@ -4,7 +4,6 @@ import { contextProvider } from '@lit-labs/context';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { get } from 'svelte/store';
 
-import { SensemakerStore } from '@neighbourhoods/nh-we-applet';
 import { SensemakerStore } from '@neighbourhoods/nh-launcher-applet';
 import { ComputeContextInput } from '@neighbourhoods/sensemaker-lite-types';
 

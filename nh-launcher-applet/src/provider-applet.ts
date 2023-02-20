@@ -3,7 +3,8 @@ import { ScopedElementsMixin } from "@open-wc/scoped-elements";
 import { CircularProgress } from "@scoped-elements/material-web";
 import { LitElement, html, css } from "lit";
 import { AppletInfo, SensemakerStore } from "@neighbourhoods/nh-launcher-applet";
-import { ProviderApp, ProviderStore } from "@neighbourhoods/provider-applet";
+import { ProviderStore } from "@neighbourhoods/provider-store";
+import { ProviderApp } from "@neighbourhoods/provider-applet";
 import appletConfig from './appletConfig';
 import { AppAgentWebsocket, AppWebsocket, CellType, ProvisionedCell } from "@holochain/client";
 

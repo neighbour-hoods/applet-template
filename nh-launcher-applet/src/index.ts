@@ -1,8 +1,6 @@
 import {
   AdminWebsocket,
   AppWebsocket,
-  InstalledCell,
-  AppInfo,
 } from "@holochain/client";
 import {
   NhLauncherApplet,
@@ -10,11 +8,8 @@ import {
   WeServices,
   AppletInfo,
 } from "@neighbourhoods/nh-launcher-applet";
-import { ProviderStore } from "@neighbourhoods/provider-applet";
 import { ProviderApplet } from "./provider-applet";
-import { AppAgentWebsocket } from '@holochain/client';
 
-const PROVIDER_ROLE_NAME = 'provider'
 
 const providerApplet: NhLauncherApplet = {
   async appletRenderers(

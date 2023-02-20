@@ -7,9 +7,12 @@ import copy from "rollup-plugin-copy";
 import babel from "@rollup/plugin-babel";
 import { importMetaAssets } from "@web/rollup-plugin-import-meta-assets";
 import { terser } from "rollup-plugin-terser";
+import typescript from '@rollup/plugin-typescript';
+
+const production = !process.env.ROLLUP_WATCH;
 
 export default {
-  input: "out-tsc/nh-launcher-applet/src/index.js",
+  input: "dist/nh-launcher-applet/src/index.js",
   output: {
     format: "es",
     dir: "dist",
@@ -34,6 +37,10 @@ export default {
     }),
     commonjs({}),
     /** Minify JS */
+    typescript({
+      sourceMap: !production,
+      inlineSources: !production,
+    }),
     terser(),
     /** Bundle assets references via import.meta.url */
     importMetaAssets(),

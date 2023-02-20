@@ -10,7 +10,6 @@ import {
 import { createContext } from '@lit-labs/context';
 
 import { ProviderService } from './ProviderService';
-export { ProviderService }
 
 // the ProviderStore manages the Writable svelte/store object, like accessing and updating it
 export class ProviderStore {
