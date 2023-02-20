@@ -2,4 +2,4 @@ packages:
   - './'
   - 'tests/'
   - 'ui/**'
-  - 'we-applet/'
+  - 'nh-launcher-applet/'
