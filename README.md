@@ -5,7 +5,7 @@ DISCLAIMER: Please note this is only a template that mostly provides repository 
 
 ## getting started
 1. set up your development environment by following the steps in [Environment Setup](#environment-setup), and if you are having issues with nix see [Without Nix](#without-nix)
-1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-we-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-we-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
+1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-launcher-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-launcher-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
 1. Clone this repository & run `npm i`
 1. add your zome code (copy/edit files under to `dna`, `tests` and `ui` folders)
 1. replace all instances of `provider` to match your hApp zome name (including in file or directory names)
