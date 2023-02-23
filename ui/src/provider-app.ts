@@ -2,13 +2,14 @@ import { LitElement, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { contextProvider } from '@lit-labs/context';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
+import { get } from 'svelte/store';
 
-import { providerStoreContext, sensemakerStoreContext } from './contexts';
-import { ProviderStore } from './provider-store';
 import { SensemakerStore } from '@neighbourhoods/nh-launcher-applet';
 import { ComputeContextInput } from '@neighbourhoods/sensemaker-lite-types';
-import { ProviderComponent } from './index'
-import { get } from 'svelte/store';
+
+import { sensemakerStoreContext } from './contexts';
+import { ProviderStore, providerStoreContext } from '@neighbourhoods/provider-store';
+import { ProviderComponent } from '@neighbourhoods/provider-component'
 
 export class ProviderApp extends ScopedElementsMixin(LitElement) {
   // set up the context providers for both stores so that they can be accessed by other components
@@ -54,7 +55,7 @@ export class ProviderApp extends ScopedElementsMixin(LitElement) {
     .home-page {
       display: flex;
       flex-direction: row;
-    }  
+    }
 
     :host {
       min-height: 100vh;

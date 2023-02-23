@@ -12,13 +12,13 @@ import {
   ProvisionedCell,
   ClonedCell,
 } from '@holochain/client';
-import '@material/mwc-circular-progress';
+import { CircularProgress } from '@scoped-elements/material-web';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { get } from 'svelte/store';
-import { ProviderStore } from './provider-store';
 import { SensemakerService, SensemakerStore } from '@neighbourhoods/nh-launcher-applet';
-import { ProviderApp } from './index';
-import { CreateOrJoinNh } from './create-or-join-nh';
+import { ProviderStore } from '@neighbourhoods/provider-store';
+import { CreateOrJoinNh } from '@neighbourhoods/component-create-or-join-nh';
+import { ProviderApp } from './provider-app';
 import appletConfig from './appletConfig'
 
 const SENSEMAKER_ROLE_NAME = "sensemaker"
@@ -94,7 +94,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     const sensemakerService = new SensemakerService(appAgentWebsocket, clonedSensemakerRoleName)
     this._sensemakerStore = new SensemakerStore(sensemakerService);
   }
-  
+
   async cloneSensemakerCell(ca_pubkey: string) {
     const clonedSensemakerCell: ClonedCell = await this.appWebsocket.createCloneCell({
       app_id: this.appInfo.installed_app_id,
@@ -179,6 +179,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     return {
       'provider-app': ProviderApp,
       'create-or-join-nh': CreateOrJoinNh,
+      'mwc-circular-progress': CircularProgress,
     };
   }
 
@@ -186,7 +187,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     .home-page {
       display: flex;
       flex-direction: row;
-    }  
+    }
 
     :host {
       min-height: 100vh;

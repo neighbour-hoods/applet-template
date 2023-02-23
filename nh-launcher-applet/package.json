@@ -21,7 +21,9 @@
     "@open-wc/scoped-elements": "^2.1.1",
     "@scoped-elements/material-web": "^0.0.19",
     "lit": "^2.2.0",
-    "@neighbourhoods/provider-applet": "file:../ui",
+    "@neighbourhoods/provider-store": "workspace:*",
+    "@neighbourhoods/provider-component": "workspace:*",
+    "@neighbourhoods/provider-applet": "workspace:*",
     "@neighbourhoods/sensemaker-lite-types": "0.4.0"
   },
   "devDependencies": {
@@ -30,6 +32,7 @@
     "@rollup/plugin-commonjs": "18.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-typescript": "^10.0.1",
     "@web/dev-server": "^0.1.21",
     "@web/dev-server-rollup": "^0.3.10",
     "@web/rollup-plugin-import-meta-assets": "^1.0.7",

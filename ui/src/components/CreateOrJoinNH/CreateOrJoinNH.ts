@@ -1,9 +1,12 @@
 import { query } from "lit/decorators.js";
 import { ScopedElementsMixin } from "@open-wc/scoped-elements";
+import { dedupeMixin } from '@open-wc/dedupe-mixin';
 import { LitElement, html, css } from "lit";
 import { TextField, Button } from '@scoped-elements/material-web'
 
-export class CreateOrJoinNh extends ScopedElementsMixin(LitElement) {
+const Scoped = dedupeMixin(ScopedElementsMixin)
+
+export class CreateOrJoinNh extends Scoped(LitElement) {
     @query('#ca-pubkey')
     input!: HTMLInputElement;
 
