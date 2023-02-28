@@ -7,6 +7,7 @@
     holochain-dev = {
       url = "github:holochain/holochain";
       inputs.versions.url = "github:holochain/holochain/?dir=versions/0_1";
+      inputs.versions.inputs.holochain.url = "github:holochain/holochain/v0_1_1";
     };
   };
 
@@ -25,7 +26,10 @@
           }: {
             devShells.default = pkgs.mkShell {
               inputsFrom = [ inputs.holochain-dev.devShells.${system}.holonix ];
-              packages = [ pkgs.nodejs-18_x ];
+              packages = with pkgs; [
+                nodejs-18_x
+                nodePackages.pnpm
+              ];
             };
           };
       };
