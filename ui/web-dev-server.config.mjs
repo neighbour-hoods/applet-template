@@ -15,7 +15,7 @@ export const makeConfig = (
   appIndex,
   rootDir = undefined,
 ) => Object.assign({
-  open: true,
+  open: false,
   watch: !hmr,
   /** Resolve bare module imports */
   nodeResolve: {
