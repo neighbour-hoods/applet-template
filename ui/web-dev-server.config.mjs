@@ -1,7 +1,9 @@
 // import { hmrPlugin, presets } from '@open-wc/dev-server-hmr';
+import { fileURLToPath } from 'url';
 import { fromRollup } from '@web/dev-server-rollup';
 import rollupReplace from '@rollup/plugin-replace';
 import rollupCommonjs from '@rollup/plugin-commonjs';
+import { esbuildPlugin } from '@web/dev-server-esbuild';
 
 const replace = fromRollup(rollupReplace);
 const commonjs = fromRollup(rollupCommonjs);
@@ -36,12 +38,27 @@ export const makeConfig = (
       delimiters: ['', ''],
     }),
 
-    commonjs(),
+    commonjs({
+      include: [
+        '**/node_modules/tweetnacl/*',
+      ],
+    }),
+
     /** Use Hot Module Replacement by uncommenting. Requires @open-wc/dev-server-hmr plugin */
     // hmr && hmrPlugin({ exclude: ['**/*/node_modules/**/*'], presets: [presets.litElement] }),
+
+    // ESBuild also handles TypeScript compilation and MIMEtype config
+    esbuildPlugin({
+      target: 'auto',
+      ts: true,
+      json: true,
+      jsx: true,
+      tsx: true,
+      tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url))
+    }),
   ],
 
   // See documentation for all available options
 }, rootDir ? { rootDir } : {})
 
-export default /** @type {import('@web/dev-server').DevServerConfig} */ makeConfig("index.html")
+export default /** @type {import('@web/dev-server').DevServerConfig} */ makeConfig("index.html", "./")
