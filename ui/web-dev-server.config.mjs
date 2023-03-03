@@ -9,7 +9,10 @@ const commonjs = fromRollup(rollupCommonjs);
 /** Use Hot Module replacement by adding --hmr to the start command */
 const hmr = process.argv.includes('--hmr');
 
-export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
+export const makeConfig = (
+  appIndex,
+  rootDir = undefined,
+) => ({
   open: true,
   watch: !hmr,
   /** Resolve bare module imports */
@@ -23,7 +26,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   // esbuildTarget: 'auto'
 
   /** Set appIndex to enable SPA routing */
-  appIndex: 'index.html',
+  appIndex,
+  rootDir,
   clearTerminalOnReload: false,
 
   plugins: [
@@ -39,4 +43,6 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   ],
 
   // See documentation for all available options
-});
+})
+
+export default /** @type {import('@web/dev-server').DevServerConfig} */ makeConfig("index.html")

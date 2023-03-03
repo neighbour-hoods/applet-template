@@ -8,10 +8,13 @@ import { importMetaAssets } from "@web/rollup-plugin-import-meta-assets";
 import { terser } from "rollup-plugin-terser";
 import typescript from '@rollup/plugin-typescript';
 
-const production = !process.env.ROLLUP_WATCH;
-
-export default {
-  input: "index.html",
+export const makeConfig = (
+  inputFile,
+  production,
+  extraPlugins = [],
+  outDir = "dist"
+) => ({
+  input: inputFile,
   output: {
     entryFileNames: "[hash].js",
     chunkFileNames: "[hash].js",
@@ -25,6 +28,8 @@ export default {
   },
 
   plugins: [
+    ...extraPlugins,
+
     /** Enable using HTML as rollup entrypoint */
     html({
       minify: true,
@@ -35,7 +40,7 @@ export default {
       preferBuiltins: false,
     }),
     replace({
-      "process.env.NODE_ENV": '"production"',
+      "process.env.NODE_ENV": production ? '"production"' : '"development"',
       "process.env.ENV": `"${process.env.ENV}"`,
       "process.env.HC_PORT": `undefined`,
       "process.env.ADMIN_PORT": `undefined`,
@@ -58,13 +63,44 @@ export default {
         [
           require.resolve("@babel/preset-env"),
           {
-            targets: ['defaults', 'not IE 11', 'safari >13', 'not op_mini all', 'last 3 Chrome versions'],
+            targets: [
+              "defaults",
+              "not IE 11",
+              "not op_mini all",
+              "last 3 Chrome major versions",
+              "last 3 Firefox major versions",
+              "last 3 Edge major versions",
+              "last 3 Safari major versions",
+            ],
             modules: false,
             bugfixes: true,
           },
         ],
       ],
-      plugins: [],
+      plugins: [
+        [
+          require.resolve("babel-plugin-template-html-minifier"),
+          {
+            modules: {
+              lit: ["html", { name: "css", encapsulation: "style" }],
+            },
+            failOnError: false,
+            strictCSS: true,
+            htmlMinifier: {
+              collapseWhitespace: true,
+              conservativeCollapse: true,
+              removeComments: true,
+              caseSensitive: true,
+              minifyCSS: true,
+            },
+          },
+        ],
+      ],
     }),
   ],
-};
+})
+
+export default makeConfig(
+  "index.html",
+  !process.env.ROLLUP_WATCH,
+)
