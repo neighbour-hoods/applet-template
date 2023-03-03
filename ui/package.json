@@ -6,9 +6,6 @@
   "version": "0.0.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "exports": {
-    ".": "./dist/index.js"
-  },
   "scripts": {
     "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
