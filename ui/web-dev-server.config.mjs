@@ -1,7 +1,9 @@
 // import { hmrPlugin, presets } from '@open-wc/dev-server-hmr';
+import { fileURLToPath } from 'url';
 import { fromRollup } from '@web/dev-server-rollup';
 import rollupReplace from '@rollup/plugin-replace';
 import rollupCommonjs from '@rollup/plugin-commonjs';
+import { esbuildPlugin } from '@web/dev-server-esbuild';
 
 const replace = fromRollup(rollupReplace);
 const commonjs = fromRollup(rollupCommonjs);
@@ -9,8 +11,11 @@ const commonjs = fromRollup(rollupCommonjs);
 /** Use Hot Module replacement by adding --hmr to the start command */
 const hmr = process.argv.includes('--hmr');
 
-export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
-  open: true,
+export const makeConfig = (
+  appIndex,
+  rootDir = undefined,
+) => Object.assign({
+  open: false,
   watch: !hmr,
   /** Resolve bare module imports */
   nodeResolve: {
@@ -23,7 +28,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   // esbuildTarget: 'auto'
 
   /** Set appIndex to enable SPA routing */
-  appIndex: 'index.html',
+  appIndex,
   clearTerminalOnReload: false,
 
   plugins: [
@@ -33,10 +38,27 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
       delimiters: ['', ''],
     }),
 
-    commonjs(),
+    commonjs({
+      include: [
+        '**/node_modules/tweetnacl/*',
+      ],
+    }),
+
     /** Use Hot Module Replacement by uncommenting. Requires @open-wc/dev-server-hmr plugin */
     // hmr && hmrPlugin({ exclude: ['**/*/node_modules/**/*'], presets: [presets.litElement] }),
+
+    // ESBuild also handles TypeScript compilation and MIMEtype config
+    esbuildPlugin({
+      target: 'auto',
+      ts: true,
+      json: true,
+      jsx: true,
+      tsx: true,
+      tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url))
+    }),
   ],
 
   // See documentation for all available options
-});
+}, rootDir ? { rootDir } : {})
+
+export default /** @type {import('@web/dev-server').DevServerConfig} */ makeConfig("index.html", "./")
