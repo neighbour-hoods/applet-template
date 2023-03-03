@@ -12,7 +12,7 @@ const hmr = process.argv.includes('--hmr');
 export const makeConfig = (
   appIndex,
   rootDir = undefined,
-) => ({
+) => Object.assign({
   open: true,
   watch: !hmr,
   /** Resolve bare module imports */
@@ -27,7 +27,6 @@ export const makeConfig = (
 
   /** Set appIndex to enable SPA routing */
   appIndex,
-  rootDir,
   clearTerminalOnReload: false,
 
   plugins: [
@@ -43,6 +42,6 @@ export const makeConfig = (
   ],
 
   // See documentation for all available options
-})
+}, rootDir ? { rootDir } : {})
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ makeConfig("index.html")
