@@ -1,14 +1,14 @@
-import nodeResolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import replace from "@rollup/plugin-replace";
+const nodeResolve = require("@rollup/plugin-node-resolve").default;
+const commonjs = require("@rollup/plugin-commonjs");
+const replace = require("@rollup/plugin-replace");
 
-import babel from "@rollup/plugin-babel";
-import html from "@web/rollup-plugin-html";
-import { importMetaAssets } from "@web/rollup-plugin-import-meta-assets";
-import { terser } from "rollup-plugin-terser";
-import typescript from '@rollup/plugin-typescript';
+const babel = require("@rollup/plugin-babel").default;
+const html = require("@web/rollup-plugin-html").default;
+const { importMetaAssets } = require("@web/rollup-plugin-import-meta-assets");
+const { terser } = require("rollup-plugin-terser");
+const typescript = require('@rollup/plugin-typescript');
 
-export const makeConfig = (
+const makeConfig = (
   inputFile,
   production,
   extraPlugins = [],
@@ -100,7 +100,10 @@ export const makeConfig = (
   ],
 })
 
-export default makeConfig(
-  "index.html",
-  !process.env.ROLLUP_WATCH,
-)
+module.exports = {
+  makeConfig,
+  default: makeConfig(
+    "index.html",
+    !process.env.ROLLUP_WATCH,
+  )
+}
