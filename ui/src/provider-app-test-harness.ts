@@ -51,12 +51,41 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
   @property()
   agentPubkey!: string;
 
+  // If true will preload all Cells so that zome WASMS are loaded in memory & ready to go.
+  // Avoids a performance penalty on first API call to each zome.
+  @property()
+  prewarm: boolean = true;
+
+  warmCell(cell: ProvisionedCell | ClonedCell, role: string) {
+    const onWarmed = console.info.bind(console, `'${role}' Cell prewarmed`, cell.name)
+    // :NOTE: intentionally not waiting for return
+    this.appWebsocket.callZome({
+      cell_id: cell.cell_id,
+      zome_name: "__PREWARM__",
+      fn_name: "__PREWARM__",
+      provenance: cell.cell_id[1],
+      payload: {},
+    }, 100).then(onWarmed).catch(() => onWarmed())
+  }
+
   // on the first update, setup any networking connections required for app execution
   async firstUpdated() {
     // connect to the conductor
     try {
       await this.connectHolochain()
 
+      if (this.prewarm) {
+        Object.entries(this.appInfo.cell_info).forEach(([role, cells]) => {
+          cells.forEach((cellData) => {
+            const cell: ProvisionedCell | ClonedCell =
+              (cellData as { [CellType.Provisioned]: ProvisionedCell })[CellType.Provisioned] ||
+              (cellData as { [CellType.Cloned]: ClonedCell })[CellType.Cloned];
+            if (cell) this.warmCell(cell, role)
+          })
+        })
+      }
+
+      // detect participant agentPubKey from primary provider cell
       const providerCellInfo: CellInfo = this.appInfo.cell_info[PROVIDER_ROLE_NAME][0]
 
       // construct the provider store
