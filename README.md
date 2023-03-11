@@ -8,7 +8,7 @@ DISCLAIMER: Please note this is only a template that mostly provides repository 
 1. familiarize yourself with the [repository structure](./STRUCTURE.md) and [reactive state management](./REACTIVE-STATE-MANAGEMENT.md) documents and the use of two important dependencies: [`@neighbourhoods/nh-launcher-applet`](https://www.npmjs.com/package/@neighbourhoods/nh-launcher-applet) & [`@neighbourhoods/sensemaker-lite-types`](https://www.npmjs.com/package/@neighbourhoods/sensemaker-lite-types)
 1. Clone this repository & run `npm i`
 1. add your zome code (copy/edit files under to `dna`, `tests` and `ui` folders)
-1. replace all instances of `provider` to match your hApp zome name (including in file or directory names)
+1. replace all instances of `provider` to match your hApp zome name (including in file or directory names), remember to review the `.yaml` files too
 1. create your applet config and add it to both [`./ui/src/appletConfig.ts`](./ui/src/appletConfig.ts) & [`./we-applet/src/appletConfig.ts`](./we-applet/src/appletConfig.ts). See [Creating Applet Config](#applet-config)
 1. build your front end store object (see `providerStore.ts`)
 1. test your UI with `npm run start`
