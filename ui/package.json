@@ -28,7 +28,7 @@
     "@neighbourhoods/provider-store": "workspace:*",
     "@neighbourhoods/sensemaker-lite-types": "0.4.0",
     "@neighbourhoods/nh-launcher-applet": "0.0.10",
-    "@open-wc/scoped-elements": "^2.1.0",
+		"@lit-labs/scoped-registry-mixin": "^1.0.1",
     "@scoped-elements/material-web": "^0.0.19",
     "@type-craft/content": "^0.0.7",
     "@type-craft/title": "^0.0.8",
