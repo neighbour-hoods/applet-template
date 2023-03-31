@@ -13,7 +13,7 @@ import {
   ClonedCell,
 } from '@holochain/client';
 import { CircularProgress } from '@scoped-elements/material-web';
-import { ScopedElementsMixin } from '@open-wc/scoped-elements';
+import { ScopedRegistryHost as ScopedElementsMixin } from "@lit-labs/scoped-registry-mixin";
 import { get } from 'svelte/store';
 import { SensemakerService, SensemakerStore } from '@neighbourhoods/nh-launcher-applet';
 import { ProviderStore } from '@neighbourhoods/provider-store';

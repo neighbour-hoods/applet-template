@@ -1,7 +1,7 @@
 import { LitElement, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { contextProvider } from '@lit-labs/context';
-import { ScopedElementsMixin } from '@open-wc/scoped-elements';
+import { ScopedRegistryHost as ScopedElementsMixin } from "@lit-labs/scoped-registry-mixin";
 import { get } from 'svelte/store';
 
 import { SensemakerStore } from '@neighbourhoods/nh-launcher-applet';
