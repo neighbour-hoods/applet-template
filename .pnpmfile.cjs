@@ -109,7 +109,7 @@ async function afterAllResolved(lockfile, context) {
     projectPkg.dependencies = resolvedPkgs[relPkgPath].specifiers
     projectPkg.devDependencies = resolvedPkgs[relPkgPath].devDependencies
 
-    fs.writeFileSync(pkgPath, JSON.stringify(projectPkg))
+    fs.writeFileSync(pkgPath, JSON.stringify(projectPkg, undefined, 2))
   })
   return lockfile
 }
