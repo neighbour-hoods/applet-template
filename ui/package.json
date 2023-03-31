@@ -1,5 +1,6 @@
 {
   "name": "@neighbourhoods/provider-applet",
+  "private": true,
   "description": "Webcomponent lit-element following open-wc recommendations",
   "license": "MIT",
   "author": "lit-element",
