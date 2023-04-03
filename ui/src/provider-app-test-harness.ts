@@ -175,7 +175,7 @@ export class ProviderAppTestHarness extends ScopedElementsMixin(LitElement) {
     }
   }
 
-  static get scopedElements() {
+	static get elementDefinitions() {
     return {
       'provider-app': ProviderApp,
       'create-or-join-nh': CreateOrJoinNh,

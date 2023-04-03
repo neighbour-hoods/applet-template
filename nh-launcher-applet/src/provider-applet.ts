@@ -69,7 +69,7 @@ export class ProviderApplet extends ScopedElementsMixin(LitElement) {
     `;
   }
 
-  static get scopedElements() {
+	static get elementDefinitions() {
     return {
       "mwc-circular-progress": CircularProgress,
       "provider-app": ProviderApp,

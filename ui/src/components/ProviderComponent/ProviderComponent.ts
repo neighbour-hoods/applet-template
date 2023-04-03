@@ -18,7 +18,7 @@ export class ProviderComponent extends ScopedElementsMixin(LitElement) {
         `
     }
 
-    static get scopedElements() {
+    static get elementDefinitions() {
         return {
         };
     }

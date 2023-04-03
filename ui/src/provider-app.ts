@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { contextProvider } from '@lit-labs/context';
+import { provide } from '@lit-labs/context';
 import { ScopedRegistryHost as ScopedElementsMixin } from "@lit-labs/scoped-registry-mixin";
 import { get } from 'svelte/store';
 
@@ -13,11 +13,11 @@ import { ProviderComponent } from '@neighbourhoods/provider-component'
 
 export class ProviderApp extends ScopedElementsMixin(LitElement) {
   // set up the context providers for both stores so that they can be accessed by other components
-  @contextProvider({ context: providerStoreContext })
+  @provide({ context: providerStoreContext })
   @property()
   providerStore!: ProviderStore;
 
-  @contextProvider({ context: sensemakerStoreContext })
+  @provide({ context: sensemakerStoreContext })
   @property()
   sensemakerStore!: SensemakerStore;
 
@@ -45,7 +45,7 @@ export class ProviderApp extends ScopedElementsMixin(LitElement) {
     const contextResult = await this.sensemakerStore.computeContext("most_important_tasks", contextResultInput)
   }
 
-  static get scopedElements() {
+	static get elementDefinitions() {
     return {
       'provider-component': ProviderComponent,
     };
