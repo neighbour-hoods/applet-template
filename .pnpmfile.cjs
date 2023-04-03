@@ -34,7 +34,8 @@ const DISALLOW_PKGS = {
 
 const path = require('path')
 const fs = require('fs')
-const topLevelPkg = require('./package.json')
+const toplevelDir = path.dirname(__filename)
+const topLevelPkg = require(path.resolve(toplevelDir, './package.json'))
 const topLevelNamespace = (topLevelPkg.name.match(/^\@(\w+)\//) || [])[1]
 if (!topLevelNamespace) throw new Error("Project configuration error: Your top-level `package.json` should specify an organisation namespace.")
 const projectNamespaces = [topLevelNamespace, ...(topLevelPkg.additionalProjectNamespaces || [])]
@@ -103,7 +104,7 @@ function readPackage(pkg, context) {
 async function afterAllResolved(lockfile, context) {
   const resolvedPkgs = lockfile.importers
   Object.keys(resolvedPkgs).filter(p => p.match(/^ui\//)).forEach(relPkgPath => {
-    const pkgPath = path.resolve(relPkgPath, './package.json')
+    const pkgPath = path.resolve(toplevelDir, relPkgPath, './package.json')
     const projectPkg = require(pkgPath)
 
     projectPkg.dependencies = resolvedPkgs[relPkgPath].specifiers

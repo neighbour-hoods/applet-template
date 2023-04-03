@@ -28,11 +28,11 @@
     "@neighbourhoods/provider-store": "workspace:*",
     "@neighbourhoods/sensemaker-lite-types": "0.4.0",
     "@neighbourhoods/nh-launcher-applet": "0.0.10",
-		"@lit-labs/scoped-registry-mixin": "^1.0.1",
+    "@lit-labs/scoped-registry-mixin": "^1.0.1",
     "@scoped-elements/material-web": "^0.0.19",
     "@type-craft/content": "^0.0.7",
     "@type-craft/title": "^0.0.8",
-    "lit": "^2.0.2",
+    "lit": "^2.6.1",
     "svelte": "*"
   },
   "devDependencies": {
