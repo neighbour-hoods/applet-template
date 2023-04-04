@@ -63,6 +63,12 @@ const injectNHBuildDeps = dependencyInjector(NH_DEPS, 'Neighbourhoods')
 const injectVFBuildDeps = dependencyInjector(VF_DEPS, 'Valueflows')
 
 function readPackage(pkg, context) {
+	// force any present modules (including dependencies) with pinned versions to match those specified in the workspace
+	for (const pinnedPkg in pinnedPkgs) {
+		if (pkg.dependencies[pinnedPkg]) pkg.dependencies[pinnedPkg] = pinnedPkgs[pinnedPkg]
+		if (pkg.devDependencies[pinnedPkg]) pkg.devDependencies[pinnedPkg] = pinnedPkgs[pinnedPkg]
+	}
+
   // ignore private workspace metadata packages
   if (pkg.private) return pkg
   // ignore packages not part of project
@@ -77,12 +83,6 @@ function readPackage(pkg, context) {
     injectLitBuildDeps(pkg, context)
     if (pkg.dependencies["lit-svelte-stores"] && pkg.dependencies["@neighbourhoods/sensemaker-lite-types"]) injectNHBuildDeps(pkg, context)
     if (Object.keys(pkg.dependencies).filter(d => d.match(/^\@valueflows\//)).length > 0) injectVFBuildDeps(pkg, context)
-  }
-
-  // force any present modules with pinned versions to match those specified in the workspace
-  for (const pinnedPkg in pinnedPkgs) {
-    if (pkg.dependencies[pinnedPkg]) pkg.dependencies[pinnedPkg] = pinnedPkgs[pinnedPkg]
-    if (pkg.devDependencies[pinnedPkg]) pkg.devDependencies[pinnedPkg] = pinnedPkgs[pinnedPkg]
   }
 
   // remove any disallowed packages and replace with their alternates
