@@ -1,5 +1,6 @@
 {
   "name": "@neighbourhoods/provider-applet",
+  "private": true,
   "description": "Webcomponent lit-element following open-wc recommendations",
   "license": "MIT",
   "author": "lit-element",
@@ -20,18 +21,18 @@
   },
   "dependencies": {
     "@holochain/client": "0.12.0",
-    "@lit-labs/context": "^0.1.2",
+    "@lit-labs/context": "^0.2.0",
+    "@lit-labs/scoped-registry-mixin": "^1.0.1",
     "@msgpack/msgpack": "^2.7.2",
     "@neighbourhoods/component-create-or-join-nh": "workspace:*",
     "@neighbourhoods/provider-component": "workspace:*",
     "@neighbourhoods/provider-store": "workspace:*",
     "@neighbourhoods/sensemaker-lite-types": "0.4.0",
     "@neighbourhoods/nh-launcher-applet": "0.0.10",
-    "@open-wc/scoped-elements": "^2.1.0",
     "@scoped-elements/material-web": "^0.0.19",
     "@type-craft/content": "^0.0.7",
     "@type-craft/title": "^0.0.8",
-    "lit": "^2.0.2",
+    "lit": "^2.6.1",
     "svelte": "*"
   },
   "devDependencies": {
@@ -49,6 +50,7 @@
     "@web/dev-server-rollup": "^0.3.10",
     "@web/rollup-plugin-html": "^1.9.1",
     "@web/rollup-plugin-import-meta-assets": "^1.0.7",
+    "@webcomponents/scoped-custom-element-registry": "^0.0.9",
     "babel-plugin-template-html-minifier": "^4.1.0",
     "bestzip": "^2.2.0",
     "concurrently": "^6.2.1",

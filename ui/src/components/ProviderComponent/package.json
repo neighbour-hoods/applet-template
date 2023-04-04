@@ -1,12 +1,13 @@
 {
-	"name": "@neighbourhoods/provider-component",
-	"version": "0.0.1",
-	"type": "module",
-	"main": "./ProviderComponent.ts",
-	"dependencies": {
-		"@lit-labs/context": "^0.1.2",
-		"@open-wc/scoped-elements": "^2.1.0",
-		"@neighbourhoods/provider-store": "workspace:*",
-		"lit": "^2.0.2"
-	}
+  "name": "@neighbourhoods/provider-component",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./ProviderComponent.ts",
+  "dependencies": {
+    "@neighbourhoods/provider-store": "workspace:*",
+    "@lit-labs/context": "^0.1.2",
+    "lit": "^2.6.1",
+    "@lit-labs/scoped-registry-mixin": "^1.0.1"
+  },
+  "devDependencies": {}
 }

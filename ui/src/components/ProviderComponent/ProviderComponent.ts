@@ -1,6 +1,6 @@
 import { contextProvided } from "@lit-labs/context";
 import { property } from "lit/decorators.js";
-import { ScopedElementsMixin } from "@open-wc/scoped-elements";
+import { ScopedRegistryHost as ScopedElementsMixin } from "@lit-labs/scoped-registry-mixin";
 import { LitElement, html } from "lit";
 import { ProviderStore, providerStoreContext } from "@neighbourhoods/provider-store";
 
@@ -18,7 +18,7 @@ export class ProviderComponent extends ScopedElementsMixin(LitElement) {
         `
     }
 
-    static get scopedElements() {
+    static get elementDefinitions() {
         return {
         };
     }
