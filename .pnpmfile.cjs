@@ -22,6 +22,8 @@ const LIT_DEPS = [
 // Specifies packages that should be pinned to the versions defined in the workspace manifest.
 const PINNED_DEPS = [
   ...NH_DEPS, ...VF_DEPS, ...LIT_DEPS,
+  '@holochain/client',
+  '@neighbourhoods/nh-launcher-applet',
 ]
 
 // Specifies deprecated packages and their preferred replacements.
